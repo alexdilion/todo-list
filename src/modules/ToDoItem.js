@@ -11,10 +11,6 @@ const ToDoItem = (itemTitle, itemId, itemDescription = "", itemPriority = 0, ite
     const getProperties = () => properties;
 
     const setProperty = (property, value) => {
-        if (!Object.prototype.hasOwnProperty.call(properties, property)) {
-            console.error(`${property} is not a property`);
-        }
-
         properties[property] = value;
     };
 
