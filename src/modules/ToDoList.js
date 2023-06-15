@@ -3,30 +3,36 @@ const ToDoList = (listName) => {
     let name = listName;
 
     const getItem = (index) => items[index];
+    const getItems = () => items;
 
     const addItem = (item) => {
         items.push(item);
-    }
+    };
 
     const deleteItem = (index) => {
-        items.splice(index, index + 1)
-    }
+        if (items.length < 1) return;
+
+        items.splice(index, index + 1);
+    };
 
     const clearItems = () => {
         items = {};
-    }
+    };
 
     const getName = () => name;
     const setName = (value) => {
         name = value;
-    }
+    };
 
     return {
         getItem,
-        addItem, 
+        getItems,
+        addItem,
         deleteItem,
-        clearItems, 
+        clearItems,
         getName,
-        setName
-    }
-}
+        setName,
+    };
+};
+
+export default ToDoList;
