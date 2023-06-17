@@ -4,10 +4,37 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>To Do</title>
-        <script src="main.js"></script>
+        <title>Listify</title>
+        <script src="main.js" defer></script>
     </head>
     <body>
-        <h1>hello world</h1>
+        <nav>
+            <div class="logo-container">
+                <img src="" alt="" class="logo-img">
+                <h1 class="logo-text">Listify</h1>
+            </div>
+        </nav>
+        <main>
+            <aside class="sidebar">
+                <div class="default-lists">
+                    <ul>
+                        <li class="default-list list-selector" data-list-index="">Today</li>
+                        <li class="default-list list-selector" data-list-index="">This Week</li>
+                        <li class="default-list list-selector" data-list-index="">All Tasks</li>
+                    </ul>
+                </div>
+
+                <div class="user-lists">
+                    <h3>My Lists</h3>
+                </div>
+            </aside>
+
+            <div class="list-display">
+                <h1 id="list-title">Today</h1>
+
+                <ul id="list-items"></ul>
+            </div>
+        </main>
+        <footer></footer>
     </body>
 </html>
