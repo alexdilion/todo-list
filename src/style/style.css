@@ -1,3 +1,57 @@
-* {
-    border: 1px solid red;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Poppins:wght@400;700;900&display=swap");
+
+:root {
+    --color-dark: #34495e;
+    --color-darker: #2c3e50;
+    --color-light: #ecf0f1;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    color: var(--color-dark);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--color-light);
+}
+
+main {
+    min-height: 100vh;
+    display: grid;
+    grid-template: 1fr / 300px 1fr;
+    grid-template-areas:
+        "sidebar list-content"
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Poppins", sans-serif;
+    color: var(--color-darker);
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-text {
+    font-weight: 900;
+    font-size: 2.5rem;
+}
+
+.logo-image {
+    font-size: 2.5rem;
+    color: #2ecc71;
 }
