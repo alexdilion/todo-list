@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Poppins:wght@400;700;900&display=swap");
 
 :root {
-    --color-dark: #34495e;
-    --color-darker: #2c3e50;
-    --color-light: #ecf0f1;
+    --black-lighter: #3f5870;
+    --black: #34495e;
+    --black-darker: #2c3e50;
+    --white: #ecf0f1;
+    --grey: #bdc3c7;
+    --accent: #2ecc71;
 }
 
 *,
@@ -12,20 +15,19 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Nunito", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-    color: var(--color-dark);
+    color: var(--black);
 }
 
 body {
     min-height: 100vh;
-    background-color: var(--color-light);
+    background-color: var(--white);
 }
 
 main {
     min-height: 100vh;
     display: grid;
     grid-template: 1fr / 300px 1fr;
-    grid-template-areas:
-        "sidebar list-content"
+    grid-template-areas: "sidebar list-content";
 }
 
 h1,
@@ -33,16 +35,35 @@ h2,
 h3,
 h4 {
     font-family: "Poppins", sans-serif;
-    color: var(--color-darker);
+    color: var(--black-darker);
+}
+
+hr {
+    color: var(--accent);
 }
 
 .sidebar {
     grid-area: sidebar;
+    background-color: var(--black-darker);
+    color: var(--white);
+    border-radius: 0 1rem 1rem 0;
+    padding: 1rem;
+}
+
+.sidebar * {
+    color: inherit;
+}
+
+.sidebar hr {
+    margin: 2rem auto;
+    color: var(--black-lighter);
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding-right: 15px;
     gap: 0.5rem;
 }
 
@@ -53,5 +74,50 @@ h4 {
 
 .logo-image {
     font-size: 2.5rem;
-    color: #2ecc71;
+    color: var(--accent);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .list-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list-selector {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--black);
+    border-radius: 0.5rem;
+    user-select: none;
+    font-weight: 700;
+    font-family: "Poppins";
+
+    transition-property: background-color border-color color border;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.list-selector:hover,
+.list-selector.selected {
+    background-color: var(--black);
+    border-color: var(--black-lighter);
+    cursor: pointer;
+}
+
+.list-selector:active,
+.list-selector:focus {
+    background-color: var(--black-lighter);
+}
+
+.list-selector.selected {
+    color: var(--accent);
+}
+
+.list-container h3 {
+    margin: 0 1rem 0.5rem;
 }
