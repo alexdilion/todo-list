@@ -5,6 +5,7 @@
     --black: #34495e;
     --black-darker: #2c3e50;
     --white: #ecf0f1;
+    --white-grey: #DCE1E3;
     --grey: #bdc3c7;
     --accent: #2ecc71;
 }
@@ -55,7 +56,7 @@ hr {
 }
 
 .sidebar hr {
-    margin: 2rem auto;
+    margin: 1.5rem auto;
     color: var(--black-lighter);
 }
 
@@ -65,16 +66,19 @@ hr {
     justify-content: center;
     padding-right: 15px;
     gap: 0.5rem;
+    text-decoration: none;
 }
 
 .logo-text {
     font-weight: 900;
     font-size: 2.5rem;
+    font-family: "Poppins", sans-serif;
 }
 
 .logo-image {
     font-size: 2.5rem;
     color: var(--accent);
+    user-select: none;
 }
 
 .sidebar ul {
@@ -102,8 +106,7 @@ hr {
     transition-timing-function: ease-in-out;
 }
 
-.list-selector:hover,
-.list-selector.selected {
+.list-selector:hover {
     background-color: var(--black);
     border-color: var(--black-lighter);
     cursor: pointer;
@@ -115,9 +118,105 @@ hr {
 }
 
 .list-selector.selected {
-    color: var(--accent);
+    color: var(--white);
+    background-color: var(--black);
+    border: 1px solid var(--accent);
 }
 
 .list-container h3 {
     margin: 0 1rem 0.5rem;
+    font-size: 1.5rem;
+}
+
+.list-display {
+    width: min(100ch, 100%);
+    padding: 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-header h1 {
+    font-size: 3rem;
+}
+
+.list-header h2 {
+    font-size: 2rem;
+}
+
+.list-header span {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#user-name,
+.default-header span {
+    color: var(--accent);
+}
+
+#user-name {
+    word-wrap: break-word;
+}
+
+#list-items-container {
+    min-height: 3rem;
+    border: 1px solid var(--black);
+    border-radius: 1rem;
+    margin-top: 4rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.list-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-button {
+    padding: 0.25rem .5rem;
+    border: 1px solid var(--black);
+    border-radius: .5rem;
+    font-size: 1rem;
+    background-color: var(--white);
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.list-button span {
+    color: var(--accent);
+}
+
+.list-button:hover,
+#list-sort:hover {
+    background-color: var(--white-grey);
+    cursor: pointer;
+}
+
+.list-button:active,
+#list-sort:active {
+    background-color: var(--grey);
+}
+
+.sort-container {
+    font-weight: 700;
+}
+
+#list-sort {
+    padding: 0.25rem .5rem;
+    border: 1px solid var(--black);
+    border-radius: .5rem;
+    background-color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background-color .2s ease-in-out;
+}
+
+#list-sort:hover {
+    cursor: pointer;
 }

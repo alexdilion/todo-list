@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Listify</title>
         <script src="main.js" defer></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <style>
             .material-symbols-outlined {
                 font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -16,11 +18,11 @@
     <body>
         <main>
             <aside class="sidebar">
-                <div class="logo-container">
+                <a href="#" class="logo-container">
                     <span class="material-symbols-outlined logo-image">checklist</span>
                     <h1 class="logo-text">Listify</h1>
-                </div>
-                <hr>
+                </a>
+                <hr />
                 <div class="default-lists list-container">
                     <ul>
                         <li class="default-list list-selector selected" data-list-index="">Today</li>
@@ -28,7 +30,7 @@
                         <li class="default-list list-selector" data-list-index="">All Tasks</li>
                     </ul>
                 </div>
-                <hr>
+                <hr />
                 <div class="user-lists list-container">
                     <h3>My Lists</h3>
                     <ul>
@@ -40,9 +42,32 @@
             </aside>
 
             <div class="list-display">
-                <h1 id="list-title">Today</h1>
+                <div class="list-header">
+                    <h1>
+                        <span id="greeting-message">Good morning,</span>
+                        <span id="user-name">Alex</span>
+                    </h1>
+                    <h2 class="default-header">
+                        Here are the things you need to do
+                        <span class="project-name">today</span>
+                    </h2>
+                </div>
 
-                <ul id="list-items"></ul>
+                <div id="list-items-container">
+                    <div class="list-actions">
+                        <button type="button" class="list-button" id="new-item">
+                            <span class="material-symbols-outlined">add</span>
+                            Add Item
+                        </button>
+                        <div class="sort-container">
+                            <label for="list-sort">Sort items:</label>
+                            <select name="sort" id="list-sort">
+                                <option value="ascending">Ascending (A→Z)</option>
+                                <option value="descending">Descending (Z→A)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </body>
