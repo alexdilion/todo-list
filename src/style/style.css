@@ -62,7 +62,9 @@ hr {
 
 .sidebar hr {
     margin: 1.5rem auto;
-    color: var(--black-lighter);
+    background-color: var(--black-lighter);
+    border: none;
+    height: 2px;
 }
 
 .logo-container {
@@ -142,12 +144,12 @@ hr {
     align-items: center;
 }
 
-.list-header h1 {
-    font-size: 3rem;
+.list-header h2 {
+    font-size: 2.5rem;
 }
 
-.list-header h2 {
-    font-size: 2rem;
+.list-header h3 {
+    font-size: 1.5rem;
 }
 
 .list-header span {
