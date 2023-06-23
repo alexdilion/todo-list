@@ -62,14 +62,61 @@
                         <div class="sort-container">
                             <label for="list-sort">Sort items:</label>
                             <select name="sort" id="list-sort">
-                                <option value="date-ascending">Oldest to newest</option>
-                                <option value="date-descending">Newest to oldest</option>
-                                <option value="priority-ascending">Lowest to highest priority</option>
-                                <option value="priority-descending">Highest to lowest priority</option>
+                                <option value="date-ascending">Ascending dates</option>
+                                <option value="date-descending">Descending dates</option>
+                                <option value="priority-ascending">Ascending priority</option>
+                                <option value="priority-descending">Descending priority</option>
                             </select>
                         </div>
                     </div>
-                    
+
+                    <div id="list-items">
+                        <div class="list-item" data-item-index="0">
+                            <input type="checkbox" data-finished="false" />
+                            <div class="item-content">
+                                <h4 class="item-header">Finish To-Do List Project</h4>
+                                <div class="item-info">
+                                    <div class="item-priority high-priority">High priority</div>
+                                    <span class="horizontal-separator"></span>
+                                    <div class="item-due-in">Due in 4 days</div>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="item-button" type="button">Edit</button>
+                                <button class="item-button" type="button">Delete</button>
+                            </div>
+                        </div>
+                        <div class="list-item" data-item-index="1">
+                            <input type="checkbox" data-finished="false" />
+                            <div class="item-content">
+                                <h4 class="item-header">Lorem ipsum dolor sit amet</h4>
+                                <div class="item-info">
+                                    <div class="item-priority medium-priority">Medium priority</div>
+                                    <span class="horizontal-separator"></span>
+                                    <div class="item-due-in">Due in 6 days</div>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="item-button" type="button">Edit</button>
+                                <button class="item-button" type="button">Delete</button>
+                            </div>
+                        </div>
+                        <div class="list-item" data-item-index="1">
+                            <input type="checkbox" data-finished="false" />
+                            <div class="item-content">
+                                <h4 class="item-header">Lorem ipsum dolor sit amet</h4>
+                                <div class="item-info">
+                                    <div class="item-priority low-priority">Low priority</div>
+                                    <span class="horizontal-separator"></span>
+                                    <div class="item-due-in">Due in 6 days</div>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="item-button" type="button">Edit</button>
+                                <button class="item-button" type="button">Delete</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
