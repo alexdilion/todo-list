@@ -133,7 +133,7 @@ hr {
     font-size: 1.5rem;
 }
 
-.list-display {
+.list-main {
     width: min(100ch, 100%);
     padding: 2rem;
     margin: 0 auto;
@@ -165,7 +165,6 @@ hr {
 }
 
 #list-items-container {
-    min-height: 3rem;
     border: 2px solid var(--black);
     border-radius: 1rem;
     margin-top: 4rem;
@@ -180,8 +179,6 @@ hr {
 .list-actions {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
 }
 
 .list-button {
@@ -227,16 +224,17 @@ hr {
     font-size: 1rem;
     font-weight: 700;
     transition: border-color 0.2s ease-in-out;
-}
-
-#list-sort:hover {
-    cursor: pointer;
+    height: 100%;
 }
 
 #list-items {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.5rem;
+}
+
+.list-actions + div {
+    margin-top: 1rem;
 }
 
 .list-item {
@@ -300,8 +298,8 @@ hr {
 }
 
 .item-button {
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 0.5rem;
     border: 1px solid var(--black);
     background-color: var(--white);
