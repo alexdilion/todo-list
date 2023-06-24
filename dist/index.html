@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Listify</title>
         <script src="main.js" defer></script>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
         <style>
             .material-symbols-outlined {
                 font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -55,7 +53,7 @@
 
                 <div id="list-items-container">
                     <div class="list-actions">
-                        <button type="button" class="list-button" id="new-item">
+                        <button type="button" class="list-button list-button-transition" id="new-item">
                             <span class="material-symbols-outlined">add</span>
                             Add Item
                         </button>
@@ -82,38 +80,12 @@
                                 </div>
                             </div>
                             <div class="item-actions">
-                                <button class="item-button" type="button">Edit</button>
-                                <button class="item-button" type="button">Delete</button>
-                            </div>
-                        </div>
-                        <div class="list-item" data-item-index="1">
-                            <input type="checkbox" data-finished="false" />
-                            <div class="item-content">
-                                <h4 class="item-header">Lorem ipsum dolor sit amet</h4>
-                                <div class="item-info">
-                                    <div class="item-priority medium-priority">Medium priority</div>
-                                    <span class="horizontal-separator"></span>
-                                    <div class="item-due-in">Due in 6 days</div>
-                                </div>
-                            </div>
-                            <div class="item-actions">
-                                <button class="item-button" type="button">Edit</button>
-                                <button class="item-button" type="button">Delete</button>
-                            </div>
-                        </div>
-                        <div class="list-item" data-item-index="1">
-                            <input type="checkbox" data-finished="false" />
-                            <div class="item-content">
-                                <h4 class="item-header">Lorem ipsum dolor sit amet</h4>
-                                <div class="item-info">
-                                    <div class="item-priority low-priority">Low priority</div>
-                                    <span class="horizontal-separator"></span>
-                                    <div class="item-due-in">Due in 6 days</div>
-                                </div>
-                            </div>
-                            <div class="item-actions">
-                                <button class="item-button" type="button">Edit</button>
-                                <button class="item-button" type="button">Delete</button>
+                                <button class="item-button list-button-transition" type="button">
+                                    <span class="material-symbols-outlined">edit</span>
+                                </button>
+                                <button class="item-button list-button-transition" type="button">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
                             </div>
                         </div>
                     </div>
