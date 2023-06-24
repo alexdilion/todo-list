@@ -1,4 +1,4 @@
-const ToDoListManager = () => {
+const ToDoProject = () => {
     const lists = [];
 
     const getList = (index) => lists[index];
@@ -22,4 +22,4 @@ const ToDoListManager = () => {
     }
 }
 
-export default ToDoListManager;
+export default ToDoProject;

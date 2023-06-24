@@ -323,3 +323,8 @@ hr {
 .item-button:active {
     background-color: var(--white-grey);
 }
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+    color: var(--white)
+}
