@@ -6,7 +6,8 @@
     --black-darker: #2c3e50;
     --white: #ecf0f1;
     --white-grey: #dce1e3;
-    --grey: #bdc3c7;
+    --grey: #95a5a6;
+    --grey-dark: #95a5a6;
     --green: #2ecc71;
     --accent: #2ecc71;
     --red: #e74c3c;
@@ -239,7 +240,8 @@ hr {
 
 .list-item {
     width: 100%;
-    padding: 1rem;
+    padding: .5rem 1rem;
+    position: relative;
 
     display: flex;
     justify-content: space-between;
@@ -256,6 +258,30 @@ hr {
 
 .item-header {
     display: inline;
+    font-size: 1.25rem;
+    transition: color .33s cubic-bezier(.25,.46,.45,.94);
+    position: relative;
+}
+
+.item-header::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    background-color: var(--black-darker);
+    transition: width .33s cubic-bezier(.25,.46,.45,.94), background-color .33s cubic-bezier(.25,.46,.45,.94)
+}
+
+input[type="checkbox"]:checked + .item-content > .item-header {
+    color: var(--grey-dark);
+}
+
+input[type="checkbox"]:checked + .item-content > .item-header::before {
+    width: calc(100% + 8px);
+    background-color: var(--grey-dark);
 }
 
 .item-info {
@@ -303,14 +329,18 @@ hr {
     border-radius: 0.5rem;
     border: 1px solid var(--black);
     background-color: var(--white);
+    display: grid;
+    place-content: center;
 }
 
 .item-button span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75%;
     color: var(--black);
+    transform-origin: center;
+    transition: transform .2s cubic-bezier(.17,.84,.44,1);
+}
+
+.item-button:hover span {
+    transform: scale(1.1);
 }
 
 .item-button:hover {
@@ -324,5 +354,5 @@ hr {
 
 input[type="checkbox"] {
     accent-color: var(--accent);
-    color: var(--white)
+    color: var(--white);
 }
