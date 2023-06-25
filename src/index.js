@@ -9,7 +9,7 @@ const test = ToDoItem(
     1,
     "",
     "high",
-    "32",
+    Date.now()
 )
 
 const test2 = ToDoItem(
@@ -23,7 +23,7 @@ const test3 = ToDoItem(
     1,
     "",
     "medium",
-    "32",
+    new Date(2023, 5, 24),
     true
 )
 

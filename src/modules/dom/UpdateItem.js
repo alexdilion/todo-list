@@ -4,7 +4,7 @@ export default function UpdateItem(item, itemElement) {
     const priorityElement = infoElement.querySelector(".item-priority");
     const dueInElement = infoElement.querySelector(".item-due-in");
     const separatorElement = infoElement.querySelector(".horizontal-separator");
-    const doneElement = itemElement.querySelector(".item-done")
+    const doneElement = itemElement.querySelector(".item-done");
 
     itemElement.querySelector(".item-header").textContent = itemProperties.title;
 
@@ -14,9 +14,21 @@ export default function UpdateItem(item, itemElement) {
         priorityElement.classList.remove("display-none");
     }
 
-    // TO DO: Update with getDueIn method when that's added
     function setDueInElementProps() {
-        dueInElement.textContent = "Due in 3 days";
+        const dueIn = item.getDueIn();
+
+        if (dueIn) {
+            if (dueIn.relativeDate === 1) {
+                dueInElement.textContent = `Due in ${dueIn.distanceFromNow}`;
+            } else if (dueIn.relativeDate === -1) {
+                dueInElement.textContent = `Overdue ${dueIn.distanceFromNow}`;
+            } else {
+                dueInElement.textContent = "Due now!!"
+            }
+        } else {
+            dueInElement.textContent = "Due soon...";
+        }
+
         dueInElement.classList.remove("display-none");
     }
 
