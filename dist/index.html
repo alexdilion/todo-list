@@ -39,7 +39,7 @@
                 </div>
             </aside>
 
-            <main class="list-main">
+            <div class="list-main">
                 <div class="list-header">
                     <h2>
                         <span id="greeting-message">Good morning,</span>
@@ -68,29 +68,30 @@
                         </div>
                     </div>
 
-                    <div id="list-items">
-                        <div class="list-item" data-item-index="0">
-                            <input type="checkbox" data-finished="false" />
-                            <div class="item-content">
-                                <h4 class="item-header">Finish To-Do List Project</h4>
-                                <div class="item-info">
-                                    <div class="item-priority high-priority">High priority</div>
-                                    <span class="horizontal-separator"></span>
-                                    <div class="item-due-in">Due in 3 days</div>
-                                </div>
-                            </div>
-                            <div class="item-actions">
-                                <button class="item-button list-button-transition" type="button">
-                                    <span class="material-symbols-outlined">edit</span>
-                                </button>
-                                <button class="item-button list-button-transition" type="button">
-                                    <span class="material-symbols-outlined">delete</span>
-                                </button>
-                            </div>
-                        </div>
+                    <div id="list-items"></div>
+                </div>
+            </div>
+        </main>
+        <div class="templates display-none" aria-hidden="true">
+            <div class="list-item" id="item-template" data-item-index="">
+                <input type="checkbox" class="item-done"/>
+                <div class="item-content">
+                    <h4 class="item-header">Finish To-Do List Project</h4>
+                    <div class="item-info">
+                        <div class="item-priority"></div>
+                        <span class="horizontal-separator"></span>
+                        <div class="item-due-in"></div>
                     </div>
                 </div>
-            </main>
-        </main>
+                <div class="item-actions">
+                    <button class="item-button list-button-transition" type="button">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="item-button list-button-transition" type="button">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
