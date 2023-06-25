@@ -1,10 +1,11 @@
-const ToDoItem = (itemTitle, itemId, itemDescription = "", itemPriority = 0, itemDue = "") => {
+const ToDoItem = (itemTitle, itemId, itemDescription = "", itemPriority = "", itemDue = null, itemDone = false) => {
     const properties = {
         title: itemTitle,
         id: itemId,
         description: itemDescription,
         priority: itemPriority,
-        due: itemDue,
+        dueDate: itemDue,
+        done: itemDone,
     };
 
     const getProperty = (property) => properties[property];

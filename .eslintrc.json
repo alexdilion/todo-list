@@ -12,7 +12,8 @@
     "rules": {
         "no-console": "off",
         "quotes": ["warn", "double"],
-        "no-unused-vars": "warn"
+        "no-unused-vars": "warn",
+        "no-param-reassign": "off"
     }
 }
 
