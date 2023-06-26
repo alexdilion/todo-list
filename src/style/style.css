@@ -236,6 +236,23 @@ hr {
     height: 100%;
 }
 
+.placeholder-wrapper {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: none;
+}
+
+.placeholder-wrapper img {
+    width: 80%;
+}
+
+#list-items:empty ~ .placeholder-wrapper {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+}
+
 #list-items {
     display: grid;
     grid-template-columns: 1fr;
