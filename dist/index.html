@@ -53,9 +53,9 @@
 
                 <div id="list-items-container">
                     <div class="list-actions">
-                        <button type="button" class="list-button list-button-transition" id="new-item">
+                        <button type="button" class="list-button list-button-transition" id="new-item" data-micromodal-trigger="modal-1">
                             <span class="material-symbols-outlined">add</span>
-                            Add Item
+                            Add task
                         </button>
                         <div class="sort-container">
                             <label for="list-sort">Sort items:</label>
@@ -94,6 +94,52 @@
                     <button class="item-button list-button-transition" type="button">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-1" class="modal" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-micromodal-close>
+                <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                    <header>
+                        <h2 id="modal-1-title">Add Task</h2>
+                    </header>
+
+                    <div id="modal-1-content">
+                        <form class="form">
+                            <div>
+                                <p>
+                                    Text boxes marked with an
+                                    <span aria-label="asterisk">*</span>
+                                    are required
+                                </p>
+                                <label for="tb-title">
+                                    Title
+                                    <strong><span aria-label="required">*</span></strong>
+                                </label>
+                                <input type="text" name="title" id="tb-title" />
+                                <span class="empty-tb input-error hidden">Please enter your task title</span>
+                            </div>
+                            <div>
+                                <label for="tb-description">Description</label>
+                                <textarea name="description" id="tb-description" rows="2"></textarea>
+                            </div>
+                            <div>
+                                <label for="cbo-priority">Priority</label>
+                                <select name="priority" id="cbo-priority">
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                    <option value="none" selected="selected">None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="date-due-date">Due Date</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <button class="list-button close-button" aria-label="Close modal" data-micromodal-close>Close</button>
                 </div>
             </div>
         </div>

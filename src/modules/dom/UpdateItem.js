@@ -20,7 +20,7 @@ export default function UpdateItem(item, itemElement) {
         if (dueIn) {
             if (dueIn.relativeDate === 1) {
                 dueInElement.textContent = `Due in ${dueIn.distanceFromNow}`;
-            } else if (dueIn.relativeDate === -1) {
+            } else if (dueIn.relativeDate === -1 && dueIn.distanceFromNow !== "0 seconds") {
                 dueInElement.textContent = `Overdue ${dueIn.distanceFromNow}`;
             } else {
                 dueInElement.textContent = "Due now!!"
