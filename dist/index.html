@@ -134,12 +134,18 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="date-due-date">Due Date</label>
+                                <label for="dt-due-date">Due Date</label>
+                                <input type="datetime-local" name="dt-due-date" id="dt-due-date" />
+                            </div>
+                            <div>
+                                <label for="chk-done">Task finished</label>
+                                <input type="checkbox" name="chk-done" id="chk-done" />
                             </div>
                         </form>
-                    </div>
 
-                    <button class="list-button close-button" aria-label="Close modal" data-micromodal-close>Close</button>
+                        <button type="button" class="list-button list-button-transition">Add</button>
+                        <button class="list-button close-button list-button-transition" aria-label="Cancel" data-micromodal-close>Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
