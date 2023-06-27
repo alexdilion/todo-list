@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Listify</title>
         <script src="main.js" defer></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
         <style>
             .material-symbols-outlined {
                 font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -53,13 +55,17 @@
 
                 <div id="list-items-container">
                     <div class="list-actions">
-                        <button type="button" class="list-button list-button-transition" id="new-item" data-micromodal-trigger="modal-1">
+                        <button
+                            type="button"
+                            class="list-button list-button-transition"
+                            id="new-item"
+                            data-micromodal-trigger="modal-1">
                             <span class="material-symbols-outlined">add</span>
                             Add task
                         </button>
                         <div class="sort-container">
                             <label for="list-sort">Sort items:</label>
-                            <select name="sort" id="list-sort">
+                            <select name="sort" id="list-sort" class="combo-box">
                                 <option value="date-ascending">Ascending dates</option>
                                 <option value="date-descending">Descending dates</option>
                                 <option value="priority-ascending">Ascending priority</option>
@@ -106,27 +112,30 @@
                     </header>
 
                     <div id="modal-1-content">
-                        <form class="form">
+                        <p class="required-info">
+                            Text boxes marked with an
+                            <span aria-label="asterisk">*</span>
+                            are required
+                        </p>
+                        <form class="task-form">
                             <div>
-                                <p>
-                                    Text boxes marked with an
-                                    <span aria-label="asterisk">*</span>
-                                    are required
-                                </p>
                                 <label for="tb-title">
                                     Title
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="tb-title" />
-                                <span class="empty-tb input-error hidden">Please enter your task title</span>
+                                <input type="text" name="title" id="tb-title" class="fancy-textbox" />
                             </div>
                             <div>
                                 <label for="tb-description">Description</label>
-                                <textarea name="description" id="tb-description" rows="2"></textarea>
+                                <textarea
+                                    class="fancy-textbox"
+                                    name="description"
+                                    id="tb-description"
+                                    rows="3"></textarea>
                             </div>
                             <div>
                                 <label for="cbo-priority">Priority</label>
-                                <select name="priority" id="cbo-priority">
+                                <select name="priority" id="cbo-priority" class="combo-box">
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -135,16 +144,27 @@
                             </div>
                             <div>
                                 <label for="dt-due-date">Due Date</label>
-                                <input type="datetime-local" name="dt-due-date" id="dt-due-date" />
+                                <input
+                                    class="fancy-textbox"
+                                    type="datetime-local"
+                                    name="dt-due-date"
+                                    id="dt-due-date" />
                             </div>
-                            <div>
+                            <div class="flex-row">
                                 <label for="chk-done">Task finished</label>
                                 <input type="checkbox" name="chk-done" id="chk-done" />
                             </div>
                         </form>
 
-                        <button type="button" class="list-button list-button-transition">Add</button>
-                        <button class="list-button close-button list-button-transition" aria-label="Cancel" data-micromodal-close>Cancel</button>
+                        <div class="form-buttons">
+                            <button type="button" class="list-button list-button-transition">Add</button>
+                            <button
+                                class="list-button close-button list-button-transition"
+                                aria-label="Cancel"
+                                data-micromodal-close>
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

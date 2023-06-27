@@ -1,0 +1,105 @@
+.modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.33s ease-in-out;
+}
+
+.modal.is-open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0b0f13ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container {
+    width: 400px;
+    background-color: var(--white);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    transform: translateY(10%);
+    transition: transform 0.33s ease-in-out;
+}
+
+.is-open .modal-container {
+    transform: translateY(0);
+}
+
+.modal-container header {
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.required-info {
+    text-align: center;
+}
+
+.task-form {
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.task-form > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-form > :not(:first-child) {
+    margin-top: 1rem;
+}
+
+div.flex-row {
+    flex-direction: row;
+    gap: .5rem;
+}
+
+span[aria-label="asterisk"],
+span[aria-label="required"] {
+    color: var(--red);
+}
+
+#tb-description {
+    resize: none;
+}
+
+.fancy-textbox {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--grey);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--white);
+    font-family: "Nunito", sans-serif;
+    transition: border-color .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.fancy-textbox:hover {
+    border-color: var(--accent);
+}
+
+.fancy-textbox:active,
+.fancy-textbox:focus {
+    background-color: var(--white-grey);
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.form-buttons button {
+    font-size: 1.25rem;
+}
