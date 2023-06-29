@@ -1,25 +1,38 @@
-const ToDoProject = () => {
-    const lists = [];
+const ToDoProject = (listName) => {
+    let items = [];
+    let name = listName;
 
-    const getList = (index) => lists[index];
-    const getLists = () => lists;
+    const getItem = (index) => items[index];
+    const getItems = () => items;
 
-    const deleteList = (index) => {
-        if (lists.length < 1) return;
+    const addItem = (item) => {
+        items.push(item);
+    };
 
-        lists.splice(index, index + 1);
-    }
+    const deleteItem = (index) => {
+        if (items.length < 1) return;
 
-    const addList = (list) => {
-        lists.push(list);
-    }
+        items.splice(index, index + 1);
+    };
+
+    const clearItems = () => {
+        items = {};
+    };
+
+    const getName = () => name;
+    const setName = (value) => {
+        name = value;
+    };
 
     return {
-        getList,
-        getLists,
-        deleteList,
-        addList
-    }
-}
+        getItem,
+        getItems,
+        addItem,
+        deleteItem,
+        clearItems,
+        getName,
+        setName,
+    };
+};
 
 export default ToDoProject;
