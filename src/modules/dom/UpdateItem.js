@@ -8,13 +8,13 @@ export default function UpdateItem(item, itemElement) {
 
     itemElement.querySelector(".item-header").textContent = itemProperties.title;
 
-    function setPriorityElementProps() {
+    function updatePriority() {
         priorityElement.classList.add(`${itemProperties.priority}-priority`);
         priorityElement.textContent = itemProperties.priority;
         priorityElement.classList.remove("display-none");
     }
 
-    function setDueInElementProps() {
+    function updateDueIn() {
         const dueIn = item.getDueIn();
 
         if (dueIn) {
@@ -25,8 +25,6 @@ export default function UpdateItem(item, itemElement) {
             } else {
                 dueInElement.textContent = "Due now!!"
             }
-        } else {
-            dueInElement.textContent = "Due soon...";
         }
 
         dueInElement.classList.remove("display-none");
@@ -34,18 +32,18 @@ export default function UpdateItem(item, itemElement) {
 
     switch (true) {
         case itemProperties.priority !== "" && itemProperties.dueDate !== null:
-            setPriorityElementProps();
-            setDueInElementProps();
+            updatePriority();
+            updateDueIn();
             separatorElement.classList.remove("display-none");
             break;
 
         case itemProperties.priority !== "":
-            setPriorityElementProps();
+            updatePriority();
             separatorElement.classList.add("display-none");
             break;
 
         case itemProperties.dueDate !== null:
-            setDueInElementProps();
+            updateDueIn();
             separatorElement.classList.add("display-none");
             break;
 

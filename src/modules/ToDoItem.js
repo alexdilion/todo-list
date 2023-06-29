@@ -1,37 +1,34 @@
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
-import isValid from "date-fns/isValid";
 import compareAsc from "date-fns/compareAsc";
 
-const ToDoItem = (itemTitle, itemId, itemDescription = "", itemPriority = "", itemDue = null, itemDone = false) => {
+const ToDoItem = (itemTitle, itemProperties = {}) => {
     const properties = {
         title: itemTitle,
-        id: itemId,
-        description: itemDescription,
-        priority: itemPriority,
-        dueDate: itemDue,
-        done: itemDone,
+        description: "",
+        priority: "",
+        dueDate: null,
+        done: false,
     };
+
+    Object.entries(itemProperties).forEach(([property, value]) => {
+        properties[property] = value;
+    });
 
     const getProperty = (property) => properties[property];
     const getProperties = () => properties;
 
     const getDueIn = () => {
-        if (isValid(properties.dueDate)) {
+        if (properties.dueDate !== null) {
             const relativeDate = compareAsc(properties.dueDate, Date.now());
             const distanceFromNow = formatDistanceToNowStrict(properties.dueDate);
 
-            return {relativeDate, distanceFromNow}
+            return { relativeDate, distanceFromNow };
         }
 
         return false;
     };
 
     const setProperty = (property, value) => {
-        if (!Object.prototype.hasOwnProperty.call(properties, property)) {
-            console.error(`${property} is not a property of ToDoItem`);
-            return;
-        }
-
         properties[property] = value;
     };
 
