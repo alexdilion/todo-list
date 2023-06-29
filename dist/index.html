@@ -16,7 +16,7 @@
         </style>
     </head>
     <body>
-        <main>
+        <div class="main-wrapper">
             <aside class="sidebar">
                 <a href="#" class="logo-container">
                     <span class="material-symbols-outlined logo-image">checklist</span>
@@ -41,7 +41,7 @@
                 </div>
             </aside>
 
-            <div class="list-main">
+            <main class="list-main">
                 <div class="list-header">
                     <h2>
                         <span id="greeting-message">Good morning,</span>
@@ -74,14 +74,14 @@
                         </div>
                     </div>
 
-                    <div id="list-items"></div>
+                    <div id="list-items" data-current-list="today"></div>
                     <div class="placeholder-wrapper">
                         <img class="placeholder-image" src="./placeholder.png" />
                         Looks like you're free for now!
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
         <div class="templates display-none" aria-hidden="true">
             <div class="list-item" id="item-template" data-item-index="">
                 <input type="checkbox" class="item-done" />
