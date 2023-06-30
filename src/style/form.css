@@ -49,7 +49,7 @@
     margin-top: 1rem;
 }
 
-.modal-form > * {
+.modal-form > :not(:last-child) {
     display: flex;
     flex-direction: column;
 }
@@ -58,7 +58,7 @@
     margin-top: 1rem;
 }
 
-div.flex-row {
+#item-form > .flex-row {
     flex-direction: row;
     gap: .5rem;
 }

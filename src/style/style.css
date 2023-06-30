@@ -188,8 +188,9 @@ hr {
     font-size: 2.5rem;
 }
 
-.project-header h3 {
+#greeting-subheader {
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .project-header span {

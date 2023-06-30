@@ -114,13 +114,13 @@
                             <span aria-label="asterisk">*</span>
                             are required
                         </p>
-                        <form class="modal-form" id="task-form">
+                        <form class="modal-form" id="item-form">
                             <div>
                                 <label for="tb-title">
                                     Title
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="tb-title" class="fancy-textbox" />
+                                <input type="text" name="title" id="tb-title" class="fancy-textbox" required />
                             </div>
                             <div>
                                 <label for="tb-description">Description</label>
@@ -132,7 +132,7 @@
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
-                                    <option value="none" selected="selected">None</option>
+                                    <option value="none" selected>None</option>
                                 </select>
                             </div>
                             <div>
@@ -143,14 +143,13 @@
                                 <label for="chk-done">Task finished</label>
                                 <input type="checkbox" name="chk-done" id="chk-done" />
                             </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="project-button button-transition">Add</button>
+                                <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
+                                    Cancel
+                                </button>
+                            </div>
                         </form>
-
-                        <div class="form-buttons">
-                            <button type="button" class="project-button button-transition">Add</button>
-                            <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
-                                Cancel
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -168,22 +167,21 @@
                             <span aria-label="asterisk">*</span>
                             are required
                         </p>
-                        <form class="modal-form" id="new-project-form">
+                        <form class="modal-form" id="project-form">
                             <div>
                                 <label for="tb-title">
                                     Title
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="tb-title" class="fancy-textbox" />
+                                <input type="text" name="title" id="tb-title" class="fancy-textbox" required />
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="project-button button-transition">Add</button>
+                                <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
+                                    Cancel
+                                </button>
                             </div>
                         </form>
-
-                        <div class="form-buttons">
-                            <button type="button" class="project-button button-transition">Add</button>
-                            <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
-                                Cancel
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
