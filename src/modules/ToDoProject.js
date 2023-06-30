@@ -25,6 +25,16 @@ const ToDoProject = (projectName, isDefault = false) => {
         name = value;
     };
 
+    const getHeader = () => {
+        if (defaultProject) {
+            if (name === "All Tasks") return { name: "", text: "Here are all of the tasks you need to do" };
+
+            return { name: name.toLowerCase(), text: "Here are the tasks you need to do " };
+        }
+
+        return { name, text: "Here are all of the tasks in " };
+    };
+
     return {
         getItem,
         getItems,
@@ -33,6 +43,7 @@ const ToDoProject = (projectName, isDefault = false) => {
         clearItems,
         getName,
         setName,
+        getHeader,
     };
 };
 
