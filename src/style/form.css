@@ -44,17 +44,17 @@
     text-align: center;
 }
 
-.task-form {
+.modal-form {
     font-size: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
-.task-form > * {
+.modal-form > * {
     display: flex;
     flex-direction: column;
 }
 
-.task-form > :not(:first-child) {
+.modal-form > :not(:first-child) {
     margin-top: 1rem;
 }
 
@@ -97,7 +97,7 @@ span[aria-label="required"] {
 .form-buttons {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     gap: 1rem;
 }
 

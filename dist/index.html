@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Listify</title>
         <script src="main.js" defer></script>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
         <style>
             .material-symbols-outlined {
                 font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
@@ -23,22 +21,18 @@
                     <h1 class="logo-text">Listify</h1>
                 </a>
                 <hr />
-                <div class="default-projects project-container">
-                    <ul>
-                        <li class="default-project project-selector selected" data-project-name="Today">Today</li>
-                        <li class="default-project project-selector" data-project-name="This Week">This Week</li>
-                        <li class="default-project project-selector" data-project-name="All Tasks">All Tasks</li>
+                <div class="project-container">
+                    <ul id="default-projects">
+                        <li class="default-project project-selector">Today</li>
+                        <li class="default-project project-selector">This Week</li>
+                        <li class="default-project project-selector">All Tasks</li>
                     </ul>
                 </div>
                 <hr />
-                <div class="user-projects project-container">
+                <div class="project-container">
                     <h3>My projects</h3>
-                    <ul>
-                        <li class="default-project project-selector" data-project-name="">testing1</li>
-                        <li class="default-project project-selector" data-project-name="">testing2</li>
-                        <li class="default-project project-selector" data-project-name="">testing3</li>
-                    </ul>
-                    <button type="button" id="new-project">
+                    <ul id="user-projects"></ul>
+                    <button type="button" id="new-project" data-micromodal-trigger="project-form-modal">
                         <span class="material-symbols-outlined">add</span>
                         New project
                     </button>
@@ -47,11 +41,11 @@
 
             <main class="project-main">
                 <div class="project-header">
-                    <h2>
-                        <span id="greeting-message">Good morning,</span>
-                        <span id="user-name">Alex</span>
+                    <h2 id="greeting-header">
+                        <span id="greeting-text">Good morning,</span>
+                        <span id="greeting-name">Alex</span>
                     </h2>
-                    <h3 class="default-header">
+                    <h3 id="greeting-subheader">
                         Here are the tasks you need to do
                         <span class="project-name">today</span>
                     </h3>
@@ -63,7 +57,7 @@
                             type="button"
                             class="project-button button-transition"
                             id="new-item"
-                            data-micromodal-trigger="modal-1">
+                            data-micromodal-trigger="item-form-modal">
                             <span class="material-symbols-outlined">add</span>
                             Add task
                         </button>
@@ -107,21 +101,20 @@
                 </div>
             </div>
         </div>
-
-        <div id="modal-1" class="modal" aria-hidden="true">
+        <div id="item-form-modal" class="modal" aria-hidden="true">
             <div class="modal-overlay" tabindex="-1" data-micromodal-close>
-                <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="item-form-modal-title">
                     <header>
-                        <h2 id="modal-1-title">Add Task</h2>
+                        <h2 id="item-form-modal-title">Add Task</h2>
                     </header>
 
-                    <div id="modal-1-content">
+                    <div id="item-form-modal-content">
                         <p class="required-info">
                             Text boxes marked with an
                             <span aria-label="asterisk">*</span>
                             are required
                         </p>
-                        <form class="task-form">
+                        <form class="modal-form" id="task-form">
                             <div>
                                 <label for="tb-title">
                                     Title
@@ -131,11 +124,7 @@
                             </div>
                             <div>
                                 <label for="tb-description">Description</label>
-                                <textarea
-                                    class="fancy-textbox"
-                                    name="description"
-                                    id="tb-description"
-                                    rows="3"></textarea>
+                                <textarea class="fancy-textbox" name="description" id="tb-description" rows="3"></textarea>
                             </div>
                             <div>
                                 <label for="cbo-priority">Priority</label>
@@ -148,11 +137,7 @@
                             </div>
                             <div>
                                 <label for="dt-due-date">Due Date</label>
-                                <input
-                                    class="fancy-textbox"
-                                    type="datetime-local"
-                                    name="dt-due-date"
-                                    id="dt-due-date" />
+                                <input class="fancy-textbox" type="datetime-local" name="dt-due-date" id="dt-due-date" />
                             </div>
                             <div class="flex-row">
                                 <label for="chk-done">Task finished</label>
@@ -162,10 +147,40 @@
 
                         <div class="form-buttons">
                             <button type="button" class="project-button button-transition">Add</button>
-                            <button
-                                class="project-button close-button button-transition"
-                                aria-label="Cancel"
-                                data-micromodal-close>
+                            <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="project-form-modal" class="modal" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-micromodal-close>
+                <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="project-form-modal-title">
+                    <header>
+                        <h2 id="project-form-modal-title">New Project</h2>
+                    </header>
+
+                    <div id="project-form-modal-content">
+                        <p class="required-info">
+                            Text boxes marked with an
+                            <span aria-label="asterisk">*</span>
+                            are required
+                        </p>
+                        <form class="modal-form" id="new-project-form">
+                            <div>
+                                <label for="tb-title">
+                                    Title
+                                    <strong><span aria-label="required">*</span></strong>
+                                </label>
+                                <input type="text" name="title" id="tb-title" class="fancy-textbox" />
+                            </div>
+                        </form>
+
+                        <div class="form-buttons">
+                            <button type="button" class="project-button button-transition">Add</button>
+                            <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
                                 Cancel
                             </button>
                         </div>

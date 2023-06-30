@@ -45,6 +45,10 @@ h4 {
     color: var(--black-darker);
 }
 
+span {
+    color: inherit;
+}
+
 hr {
     color: var(--accent);
 }
@@ -176,6 +180,10 @@ hr {
     align-items: center;
 }
 
+.project-header {
+    color: var(--black);
+}
+
 .project-header h2 {
     font-size: 2.5rem;
 }
@@ -189,12 +197,12 @@ hr {
     font-size: inherit;
 }
 
-#user-name,
-.default-header span {
+#greeting-name,
+.project-name {
     color: var(--accent);
 }
 
-#user-name {
+#greeting-name {
     word-wrap: break-word;
 }
 
