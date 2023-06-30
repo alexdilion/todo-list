@@ -32,7 +32,7 @@ const ToDoProject = (projectName, isDefault = false) => {
             return { name: name.toLowerCase(), text: "Here are the tasks you need to do " };
         }
 
-        return { name, text: "Here are all of the tasks in " };
+        return { name, text: "Here are the tasks in " };
     };
 
     return {
