@@ -116,11 +116,11 @@
                         </p>
                         <form class="modal-form" id="item-form">
                             <div>
-                                <label for="tb-title">
+                                <label for="task-title">
                                     Title
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="tb-title" class="fancy-textbox" required />
+                                <input type="text" name="title" id="task-title" class="fancy-textbox" required />
                             </div>
                             <div>
                                 <label for="tb-description">Description</label>
@@ -144,7 +144,7 @@
                                 <input type="checkbox" name="chk-done" id="chk-done" />
                             </div>
                             <div class="form-buttons">
-                                <button type="button" class="project-button button-transition" data-micromodal-close>Add</button>
+                                <button type="submit" class="project-button button-transition" id="add-task">Add</button>
                                 <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
                                     Cancel
                                 </button>
@@ -169,14 +169,14 @@
                         </p>
                         <form class="modal-form" id="project-form">
                             <div>
-                                <label for="tb-title">
-                                    Title
+                                <label for="project-name">
+                                    Name
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="tb-title" class="fancy-textbox" required />
+                                <input type="text" name="title" id="project-name" class="fancy-textbox" required />
                             </div>
                             <div class="form-buttons">
-                                <button type="button" class="project-button button-transition" data-micromodal-close>Add</button>
+                                <button type="submit" class="project-button button-transition" id="add-project">Add</button>
                                 <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
                                     Cancel
                                 </button>
