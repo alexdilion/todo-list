@@ -23,26 +23,30 @@
                     <h1 class="logo-text">Listify</h1>
                 </a>
                 <hr />
-                <div class="default-lists list-container">
+                <div class="default-projects project-container">
                     <ul>
-                        <li class="default-list list-selector selected" data-list-index="">Today</li>
-                        <li class="default-list list-selector" data-list-index="">This Week</li>
-                        <li class="default-list list-selector" data-list-index="">All Tasks</li>
+                        <li class="default-project project-selector selected" data-project-name="Today">Today</li>
+                        <li class="default-project project-selector" data-project-name="This Week">This Week</li>
+                        <li class="default-project project-selector" data-project-name="All Tasks">All Tasks</li>
                     </ul>
                 </div>
                 <hr />
-                <div class="user-lists list-container">
-                    <h3>My Lists</h3>
+                <div class="user-projects project-container">
+                    <h3>My projects</h3>
                     <ul>
-                        <li class="default-list list-selector" data-list-index="">testing1</li>
-                        <li class="default-list list-selector" data-list-index="">testing2</li>
-                        <li class="default-list list-selector" data-list-index="">testing3</li>
+                        <li class="default-project project-selector" data-project-name="">testing1</li>
+                        <li class="default-project project-selector" data-project-name="">testing2</li>
+                        <li class="default-project project-selector" data-project-name="">testing3</li>
                     </ul>
+                    <button type="button" id="new-project">
+                        <span class="material-symbols-outlined">add</span>
+                        New project
+                    </button>
                 </div>
             </aside>
 
-            <main class="list-main">
-                <div class="list-header">
+            <main class="project-main">
+                <div class="project-header">
                     <h2>
                         <span id="greeting-message">Good morning,</span>
                         <span id="user-name">Alex</span>
@@ -53,19 +57,19 @@
                     </h3>
                 </div>
 
-                <div id="list-items-container">
-                    <div class="list-actions">
+                <div id="project-items-container">
+                    <div class="project-actions">
                         <button
                             type="button"
-                            class="list-button list-button-transition"
+                            class="project-button button-transition"
                             id="new-item"
                             data-micromodal-trigger="modal-1">
                             <span class="material-symbols-outlined">add</span>
                             Add task
                         </button>
                         <div class="sort-container">
-                            <label for="list-sort">Sort items:</label>
-                            <select name="sort" id="list-sort" class="combo-box">
+                            <label for="project-sort">Sort items:</label>
+                            <select name="sort" id="project-sort" class="combo-box">
                                 <option value="date-ascending">Ascending dates</option>
                                 <option value="date-descending">Descending dates</option>
                                 <option value="priority-ascending">Ascending priority</option>
@@ -74,7 +78,7 @@
                         </div>
                     </div>
 
-                    <div id="list-items" data-current-list="today"></div>
+                    <div id="project-items" data-current-project="Chores"></div>
                     <div class="placeholder-wrapper">
                         <img class="placeholder-image" src="./placeholder.png" />
                         Looks like you're free for now!
@@ -83,7 +87,7 @@
             </main>
         </div>
         <div class="templates display-none" aria-hidden="true">
-            <div class="list-item" id="item-template" data-item-index="">
+            <div class="project-item" id="item-template" data-item-index="">
                 <input type="checkbox" class="item-done" />
                 <div class="item-content">
                     <h4 class="item-header">Finish To-Do List Project</h4>
@@ -94,10 +98,10 @@
                     </div>
                 </div>
                 <div class="item-actions">
-                    <button class="item-button list-button-transition" type="button">
+                    <button class="item-button button-transition" type="button">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-                    <button class="item-button list-button-transition" type="button">
+                    <button class="item-button button-transition" type="button">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
                 </div>
@@ -157,9 +161,9 @@
                         </form>
 
                         <div class="form-buttons">
-                            <button type="button" class="list-button list-button-transition">Add</button>
+                            <button type="button" class="project-button button-transition">Add</button>
                             <button
-                                class="list-button close-button list-button-transition"
+                                class="project-button close-button button-transition"
                                 aria-label="Cancel"
                                 data-micromodal-close>
                                 Cancel

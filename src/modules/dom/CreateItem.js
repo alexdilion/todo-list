@@ -1,6 +1,6 @@
 import UpdateItem from "./UpdateItem";
 
-const ITEM_CONTAINER = document.querySelector("#list-items");
+const ITEM_CONTAINER = document.querySelector("#project-items");
 const ITEM_TEMPLATE = document.querySelector("#item-template");
 
 export default function CreateItem(item) {

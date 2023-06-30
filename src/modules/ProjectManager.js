@@ -1,4 +1,4 @@
-const ProjectManager = () => {
+const ProjectManager = (() => {
     const projects = [];
 
     const getProject = (index) => projects[index];
@@ -20,6 +20,6 @@ const ProjectManager = () => {
         deleteProject,
         addProject,
     };
-};
+})();
 
 export default ProjectManager;

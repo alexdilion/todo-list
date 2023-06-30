@@ -7,11 +7,13 @@ import LoadProject from "./dom/LoadProject";
 // Add default projects for the following categories: Today, This Week & All Tasks
 
 const defaultProject = ToDoProject("Chores");
+
 const test = ToDoItem("Take out the trash ", {
     priority: "high",
     dueDate: Date.now(),
     done: false,
 });
+
 const test2 = ToDoItem("Do laundry", {
     priority: "medium",
     dueDate: new Date(2023, 5, 30)
@@ -19,5 +21,7 @@ const test2 = ToDoItem("Do laundry", {
 
 defaultProject.addItem(test);
 defaultProject.addItem(test2);
+
+ProjectManager.addProject(defaultProject);
 
 LoadProject(defaultProject);

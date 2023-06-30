@@ -1,6 +1,7 @@
-const ToDoProject = (listName) => {
+const ToDoProject = (projectName, isDefault = false) => {
     let items = [];
-    let name = listName;
+    let name = projectName;
+    const defaultProject = isDefault;
 
     const getItem = (index) => items[index];
     const getItems = () => items;
