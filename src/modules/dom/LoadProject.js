@@ -8,7 +8,7 @@ export default function LoadProject(project) {
     const header = project.getHeader();
 
     PROJECT_ITEMS.innerHTML = "";
-    PROJECT_ITEMS.setAttribute("data-current-project", project.getName());
+    PROJECT_ITEMS.setAttribute("data-current-project", project.getIndex());
 
     SUBHEADER.textContent = header.text;
     SUBHEADER.innerHTML += `<span class="project-name">${header.name}</span>`;

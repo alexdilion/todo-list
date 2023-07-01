@@ -3,7 +3,9 @@ import LoadProject from "./LoadProject";
 const PROJECTS_CONTAINER = document.querySelector("#user-projects");
 
 export default function UpdateProjectTabs(projects) {
-    let currentProject = document.querySelector("#project-items").getAttribute("data-current-project");
+    const currentProjectIndex = document.querySelector("#project-items").getAttribute("data-current-project");
+    let currentProject = projects[+currentProjectIndex];
+
     PROJECTS_CONTAINER.innerHTML = "";
 
     projects.forEach((project) => {
@@ -11,7 +13,7 @@ export default function UpdateProjectTabs(projects) {
         projectElement.classList.add("default-project", "project-selector");
         projectElement.textContent = project.getName();
 
-        if (currentProject === project.getName()) {
+        if (currentProject.getName() === project.getName()) {
             projectElement.classList.add("selected");
         }
 
@@ -19,17 +21,17 @@ export default function UpdateProjectTabs(projects) {
             if (projectElement.textContent === currentProject) return;
 
             LoadProject(project);
-            currentProject = project.getName();
+            currentProject = projects[project.getIndex()];
 
             const tabs = PROJECTS_CONTAINER.querySelectorAll("li");
 
-            tabs.forEach(tab => {
-                if (tab.textContent === currentProject) {
+            tabs.forEach((tab) => {
+                if (tab.textContent === currentProject.getName()) {
                     tab.classList.add("selected");
                 } else {
                     tab.classList.remove("selected");
                 }
-            })
+            });
         });
 
         PROJECTS_CONTAINER.appendChild(projectElement);

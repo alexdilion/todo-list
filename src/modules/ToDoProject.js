@@ -1,6 +1,7 @@
 const ToDoProject = (projectName, isDefault = false) => {
     let items = [];
     let name = projectName;
+    let index = 0;
     const defaultProject = isDefault;
 
     const getItem = (index) => items[index];
@@ -25,6 +26,11 @@ const ToDoProject = (projectName, isDefault = false) => {
         name = value;
     };
 
+    const getIndex = () => index;
+    const setIndex = (newIndex) => {
+        index = newIndex;
+    }
+
     const getHeader = () => {
         if (defaultProject) {
             if (name === "All Tasks") return { name: "", text: "Here are all of the tasks you need to do" };
@@ -41,6 +47,8 @@ const ToDoProject = (projectName, isDefault = false) => {
         addItem,
         deleteItem,
         clearItems,
+        getIndex,
+        setIndex,
         getName,
         setName,
         getHeader,
