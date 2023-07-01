@@ -5,7 +5,25 @@ function isValidForm(form) {
 export function getProjectFormData(form) {
     if (!isValidForm(form)) return false;
 
-    return form.querySelector("#project-name").value;
+    const formData = {};
+    formData.name = form.querySelector("#project-name").value;
+
+    return formData;
+}
+
+export function getItemFormData(form) {
+    if (!isValidForm(form)) return false;
+
+    const formData = {};
+
+    formData.title = form.querySelector("#item-title").value;
+    formData.description = form.querySelector("#item-description").value;
+    formData.priority = form.querySelector("#item-priority").value;
+    formData.done = form.querySelector("#item-done").checked;
+
+    formData.dueDate = form.querySelector("#item-due-date").value !== "" ? new Date(form.querySelector("#item-due-date").value) : null;
+
+    return formData;
 }
 
 export function resetForm(modal) {
@@ -31,5 +49,5 @@ export function resetForm(modal) {
     });
 
     // eslint-disable-next-line no-underscore-dangle
-    document.querySelector("#dt-due-date")._flatpickr.clear();
+    document.querySelector("#item-due-date")._flatpickr.clear();
 }

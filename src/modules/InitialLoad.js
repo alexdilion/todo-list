@@ -52,7 +52,7 @@ export default function InitialLoad() {
     LoadProject(choresProject);
     UpdateProjectTabs(ProjectManager.getProjects());
 
-    flatpickr("#dt-due-date", {
+    flatpickr("#item-due-date", {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         minDate: "today",

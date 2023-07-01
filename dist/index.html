@@ -45,10 +45,7 @@
                         <span id="greeting-text">Good morning,</span>
                         <span id="greeting-name">Alex</span>
                     </h2>
-                    <h3 id="greeting-subheader">
-                        Here are the tasks you need to do
-                        <span class="project-name">today</span>
-                    </h3>
+                    <h3 id="greeting-subheader"></h3>
                 </div>
 
                 <div id="project-items-container">
@@ -72,7 +69,7 @@
                         </div>
                     </div>
 
-                    <div id="project-items" data-current-project="Chores"></div>
+                    <div id="project-items" data-current-project="0"></div>
                     <div class="placeholder-wrapper">
                         <img class="placeholder-image" src="./placeholder.png" />
                         Looks like you're free for now!
@@ -116,19 +113,19 @@
                         </p>
                         <form class="modal-form" id="item-form">
                             <div>
-                                <label for="task-title">
+                                <label for="item-title">
                                     Title
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="task-title" class="fancy-textbox" required />
+                                <input type="text" name="title" id="item-title" class="fancy-textbox" required />
                             </div>
                             <div>
-                                <label for="tb-description">Description</label>
-                                <textarea class="fancy-textbox" name="description" id="tb-description" rows="3"></textarea>
+                                <label for="item-description">Description</label>
+                                <textarea class="fancy-textbox" name="description" id="item-description" rows="3"></textarea>
                             </div>
                             <div>
-                                <label for="cbo-priority">Priority</label>
-                                <select name="priority" id="cbo-priority" class="combo-box">
+                                <label for="item-priority">Priority</label>
+                                <select name="priority" id="item-priority" class="combo-box">
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -136,15 +133,15 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="dt-due-date">Due Date</label>
-                                <input class="fancy-textbox" type="datetime-local" name="dt-due-date" id="dt-due-date" />
+                                <label for="item-due-date">Due Date</label>
+                                <input class="fancy-textbox" type="datetime-local" name="item-due-date" id="item-due-date" />
                             </div>
                             <div class="flex-row">
-                                <label for="chk-done">Task finished</label>
-                                <input type="checkbox" name="chk-done" id="chk-done" />
+                                <label for="item-done">Task finished</label>
+                                <input type="checkbox" name="item-done" id="item-done" />
                             </div>
                             <div class="form-buttons">
-                                <button type="submit" class="project-button button-transition" id="add-task">Add</button>
+                                <button type="submit" class="project-button button-transition" id="add-item">Add</button>
                                 <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
                                     Cancel
                                 </button>
