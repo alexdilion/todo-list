@@ -11,7 +11,7 @@ export function updateTask(task, taskElement) {
     function updatePriority() {
         priorityElement.classList.add(`${taskProperties.priority}-priority`);
         priorityElement.textContent = taskProperties.priority;
-        priorityElement.classList.remove("display-none");
+        priorityElement.hidden = false;
     }
 
     function updateDueIn() {
@@ -27,30 +27,30 @@ export function updateTask(task, taskElement) {
             }
         }
 
-        dueInElement.classList.remove("display-none");
+        dueInElement.hidden = false;
     }
 
     switch (true) {
         case taskProperties.priority !== "none" && taskProperties.dueDate !== null:
             updatePriority();
             updateDueIn();
-            separatorElement.classList.remove("display-none");
+            separatorElement.hidden = false;
             break;
 
         case taskProperties.priority !== "none":
             updatePriority();
-            separatorElement.classList.add("display-none");
+            separatorElement.hidden = true;
             break;
 
         case taskProperties.dueDate !== null:
             updateDueIn();
-            separatorElement.classList.add("display-none");
+            separatorElement.hidden = true;
             break;
 
         default:
-            separatorElement.classList.add("display-none");
-            priorityElement.classList.add("display-none");
-            dueInElement.classList.add("display-none");
+            separatorElement.hidden = true;
+            priorityElement.hidden = true;
+            dueInElement.hidden = true;
             break;
     }
 

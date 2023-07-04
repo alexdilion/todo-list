@@ -6,7 +6,7 @@ import TabsView from "../views/Tabs";
 import ProjectView from "../views/Project";
 import { createTask } from "../views/TaskUtility";
 
-import templateProjects from "../TemplateProjects";
+import templateProjects from "../templateProjects";
 
 export default function ModelController(ProjectManager) {
     const ProjectManagerEvents = ProjectManager.getEvents();

@@ -65,7 +65,7 @@ export default function templateProjects() {
         priority: "high",
     });
 
-    const p3Task2 = Task("Learn to draw");
+    const p3Task2 = Task("Learn to draw", {});
 
     const p3Task3 = Task("Start going to the gym", {
         priority: "medium",

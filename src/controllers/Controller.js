@@ -2,9 +2,7 @@ import ProjectManager from "../models/ProjectManager";
 import ModelController from "./ModelController";
 import ViewController from "./ViewController";
 
-const Controller = () => {
+export default function Controller() {
     ModelController(ProjectManager);
     ViewController(ProjectManager);
 };
-
-export default Controller;

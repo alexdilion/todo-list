@@ -6,7 +6,7 @@ const Task = (taskTitle, taskProperties = {}) => {
     const properties = {
         title: taskTitle,
         description: "",
-        priority: "",
+        priority: "none",
         dueDate: null,
         done: false,
     };
