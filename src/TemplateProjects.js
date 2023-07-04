@@ -6,7 +6,7 @@ function addToNow(time) {
     return add(new Date(Date.now()), time);
 }
 
-export default function TemplateProjects() {
+export default function templateProjects() {
     const Project1 = Project("Chores");
 
     const p1Task1 = Task("Buy groceries", {
