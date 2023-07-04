@@ -48,30 +48,30 @@
                     <h3 id="greeting-subheader"></h3>
                 </div>
 
-                <div id="project-items-container">
+                <div id="tasks-container">
                     <div class="project-actions">
                         <button
                             type="button"
                             class="project-button button-transition"
-                            id="new-item"
-                            data-micromodal-trigger="item-form-modal">
+                            id="new-task"
+                            data-micromodal-trigger="task-form-modal">
                             <span class="material-symbols-outlined">add</span>
                             Add task
                         </button>
                         <div class="sort-container">
-                            <label for="project-sort">Sort items:</label>
+                            <label for="project-sort">Sort tasks:</label>
                             <select name="sort" id="project-sort" class="combo-box">
                                 <option value="date-ascending">Ascending dates</option>
                                 <option value="date-descending">Descending dates</option>
                                 <option value="priority-ascending">Ascending priority</option>
                                 <option value="priority-descending">Descending priority</option>
-                                <option value="completed">Complete first</option>
-                                <option value="incomplete">Incomplete first</option>
+                                <option value="completed">Finished first</option>
+                                <option value="incomplete">Unfinished first</option>
                             </select>
                         </div>
                     </div>
 
-                    <div id="project-items" data-current-project="0"></div>
+                    <div id="project-tasks" data-current-project="0"></div>
                     <div class="placeholder-wrapper">
                         <img class="placeholder-image" src="./placeholder.png" />
                         Looks like you're free for now!
@@ -80,54 +80,54 @@
             </main>
         </div>
         <div class="templates display-none" aria-hidden="true">
-            <div class="project-item" id="item-template" data-item-index="">
-                <input type="checkbox" class="item-done" />
-                <div class="item-content">
-                    <h4 class="item-header">Finish To-Do List Project</h4>
-                    <div class="item-info">
-                        <div class="item-priority"></div>
+            <div class="project-task" id="task-template" data-task-index="">
+                <input type="checkbox" class="task-done" />
+                <div class="task-content">
+                    <h4 class="task-header">Finish To-Do List Project</h4>
+                    <div class="task-info">
+                        <div class="task-priority"></div>
                         <span class="horizontal-separator"></span>
-                        <div class="item-due-in"></div>
+                        <div class="task-due-in"></div>
                     </div>
                 </div>
-                <div class="item-actions">
-                    <button class="item-button button-transition" type="button">
+                <div class="task-actions">
+                    <button class="task-button button-transition" type="button">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-                    <button class="item-button button-transition" type="button">
+                    <button class="task-button button-transition" type="button">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="item-form-modal" class="modal" aria-hidden="true">
+        <div id="task-form-modal" class="modal" aria-hidden="true">
             <div class="modal-overlay" tabindex="-1" data-micromodal-close>
-                <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="item-form-modal-title">
+                <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="task-form-modal-title">
                     <header>
-                        <h2 id="item-form-modal-title">Add Task</h2>
+                        <h2 id="task-form-modal-title">Add Task</h2>
                     </header>
 
-                    <div id="item-form-modal-content">
+                    <div id="task-form-modal-content">
                         <p class="required-info">
                             Text boxes marked with an
                             <span aria-label="asterisk">*</span>
                             are required
                         </p>
-                        <form class="modal-form" id="item-form">
+                        <form class="modal-form" id="task-form">
                             <div>
-                                <label for="item-title">
+                                <label for="task-title">
                                     Title
                                     <strong><span aria-label="required">*</span></strong>
                                 </label>
-                                <input type="text" name="title" id="item-title" class="fancy-textbox" required />
+                                <input type="text" name="title" id="task-title" class="fancy-textbox" required />
                             </div>
                             <div>
-                                <label for="item-description">Description</label>
-                                <textarea class="fancy-textbox" name="description" id="item-description" rows="3"></textarea>
+                                <label for="task-description">Description</label>
+                                <textarea class="fancy-textbox" name="description" id="task-description" rows="3"></textarea>
                             </div>
                             <div>
-                                <label for="item-priority">Priority</label>
-                                <select name="priority" id="item-priority" class="combo-box">
+                                <label for="task-priority">Priority</label>
+                                <select name="priority" id="task-priority" class="combo-box">
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -135,15 +135,15 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="item-due-date">Due Date</label>
-                                <input class="fancy-textbox" type="datetime-local" name="item-due-date" id="item-due-date" />
+                                <label for="task-due-date">Due Date</label>
+                                <input class="fancy-textbox" type="datetime-local" name="task-due-date" id="task-due-date" />
                             </div>
                             <div class="flex-row">
-                                <label for="item-done">Task finished</label>
-                                <input type="checkbox" name="item-done" id="item-done" />
+                                <label for="task-done">Task finished</label>
+                                <input type="checkbox" name="task-done" id="task-done" />
                             </div>
                             <div class="form-buttons">
-                                <button type="submit" class="project-button button-transition" id="add-item">Add</button>
+                                <button type="submit" class="project-button button-transition" id="add-task">Add</button>
                                 <button class="project-button close-button button-transition" aria-label="Cancel" data-micromodal-close>
                                     Cancel
                                 </button>

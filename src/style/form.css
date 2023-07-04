@@ -58,7 +58,7 @@
     margin-top: 1rem;
 }
 
-#item-form > .flex-row {
+#task-form > .flex-row {
     flex-direction: row;
     gap: .5rem;
 }

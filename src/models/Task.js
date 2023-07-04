@@ -1,16 +1,19 @@
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import compareAsc from "date-fns/compareAsc";
+import EventManager from "../EventManager";
 
-const ToDoItem = (itemTitle, itemProperties = {}) => {
+const Task = (taskTitle, taskProperties = {}) => {
     const properties = {
-        title: itemTitle,
+        title: taskTitle,
         description: "",
         priority: "",
         dueDate: null,
         done: false,
     };
 
-    Object.entries(itemProperties).forEach(([property, value]) => {
+    const propertyChangedEvent = EventManager();
+
+    Object.entries(taskProperties).forEach(([property, value]) => {
         properties[property] = value;
     });
 
@@ -30,14 +33,18 @@ const ToDoItem = (itemTitle, itemProperties = {}) => {
 
     const setProperty = (property, value) => {
         properties[property] = value;
+        propertyChangedEvent.trigger({ property, value });
     };
+
+    const getEvents = () => ({ propertyChangedEvent });
 
     return {
         getProperty,
         getProperties,
         getDueIn,
         setProperty,
+        getEvents,
     };
 };
 
-export default ToDoItem;
+export default Task;
