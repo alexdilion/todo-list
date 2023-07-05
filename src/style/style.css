@@ -121,10 +121,8 @@ hr {
     font-weight: 700;
     font-family: "Poppins";
     background-color: var(--black-darker);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    word-wrap: break-word;
+    position: relative;
 
     transition-property: background-color border-color color border;
     transition-duration: 0.2s;
@@ -134,6 +132,11 @@ hr {
 .selector-actions {
     display: flex;
     gap: 0.5rem;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    right: -1.5rem;
+    top: 50%;
 
     opacity: 0;
     pointer-events: none;
@@ -149,7 +152,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: outline 0.2s ease-in-out, background-color .2s ease-in-out;
+    transition: outline 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .selector-button span {
