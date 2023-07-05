@@ -26,7 +26,7 @@ const Project = (projectName, isDefault = false) => {
     const deleteTask = (taskIndex) => {
         if (tasks.length < 1) return;
 
-        taskDeletedEvent.trigger({ task: tasks[taskIndex] });
+        taskDeletedEvent.trigger({ taskIndex });
         tasks.splice(taskIndex, taskIndex + 1);
     };
 

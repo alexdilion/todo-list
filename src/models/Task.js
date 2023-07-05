@@ -10,7 +10,7 @@ const Task = (taskProject, taskProperties) => {
         dueDate: null,
         done: false,
     };
-    const parentProject = taskProject;
+    const project = taskProject;
 
     const propertyChangedEvent = EventManager();
 
@@ -20,7 +20,7 @@ const Task = (taskProject, taskProperties) => {
 
     const getProperty = (property) => properties[property];
     const getProperties = () => properties;
-    const getParentProject = () => parentProject;
+    const getParentProject = () => project;
 
     const getDueIn = () => {
         if (properties.dueDate !== null) {
@@ -46,6 +46,7 @@ const Task = (taskProject, taskProperties) => {
         getDueIn,
         setProperty,
         getEvents,
+        getParentProject,
     };
 };
 

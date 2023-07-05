@@ -4,7 +4,7 @@ import TaskModel from "../models/Task";
 import ModalFormView from "../views/ModalForm";
 import TabsView from "../views/Tabs";
 import ProjectView from "../views/Project";
-import { createTask } from "../views/TaskUtility";
+import TaskView from "../views/Task"
 
 import templateProjects from "../templateProjects";
 
@@ -18,7 +18,11 @@ export default function ModelController(ProjectManager) {
         currentProjectEvents = ProjectManager.getCurrentProject().getEvents();
 
         currentProjectEvents.taskAddedEvent.addListener((event) => {
-            createTask(event.task);
+            TaskView.createTask(event.task);
+        });
+
+        currentProjectEvents.taskDeletedEvent.addListener((event) => {
+            TaskView.removeTask(event.taskIndex);
         });
 
         project.setListening();

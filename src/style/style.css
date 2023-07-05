@@ -403,6 +403,7 @@ input[type="checkbox"]:checked + .task-content > .task-header::before {
     color: var(--black);
     transform-origin: center;
     transition: transform 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
+    pointer-events: none;
 }
 
 .task-button:hover span {

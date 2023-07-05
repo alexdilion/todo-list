@@ -86,21 +86,19 @@ const ModalForm = (() => {
             PROJECT_FORM.closest(".modal-overlay").click();
         });
 
-        cancelButtons.forEach(element => {
+        cancelButtons.forEach((element) => {
             element.addEventListener("click", (event) => {
                 if (!event.target.hasAttribute("data-micromodal-close")) return;
 
                 resetInputs(TASK_FORM);
                 resetInputs(PROJECT_FORM);
-            })
-        })
+            });
+        });
     };
 
-    const getEvents = () => {
-        initEvents();
+    initEvents();
 
-        return { submitFormEvent };
-    };
+    const getEvents = () => ({ submitFormEvent });
 
     return {
         resetInputs,
