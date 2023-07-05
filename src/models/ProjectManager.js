@@ -6,14 +6,16 @@ const ProjectManager = (() => {
 
     const projectAddedEvent = EventManager();
     const projectSwitchedEvent = EventManager();
+    const projectDeletedEvent = EventManager();
 
     const getProject = (index) => projects[index];
     const getProjects = () => projects;
 
     const deleteProject = (index) => {
-        if (projects.length < 1) return;
+        if (projects.length <= 1) return;
 
         projects.splice(index, index + 1);
+        projectDeletedEvent.trigger({ index });
     };
 
     const addProject = (project) => {
@@ -37,7 +39,7 @@ const ProjectManager = (() => {
     const getCurrentProject = () => projects[currentIndex];
     const getCurrentProjectIndex = () => currentIndex;
 
-    const getEvents = () => ({ projectAddedEvent, projectSwitchedEvent });
+    const getEvents = () => ({ projectAddedEvent, projectSwitchedEvent, projectDeletedEvent });
 
     return {
         getProject,

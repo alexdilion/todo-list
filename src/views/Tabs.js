@@ -2,15 +2,15 @@ import EventManager from "../EventManager";
 
 const Tabs = (() => {
     const tabsContainer = document.querySelector("#user-projects");
-    const tabTemplate = document.querySelector("#tab-template")
+    const tabTemplate = document.querySelector("#tab-template");
 
-    const tabClickedEvent = EventManager();
+    const tabClickEvent = EventManager();
 
     const LoadTabs = (projects, currentProject) => {
         tabsContainer.innerHTML = "";
 
         projects.forEach((project, index) => {
-            const tab = tabTemplate.cloneNode(true)
+            const tab = tabTemplate.cloneNode(true);
             tab.removeAttribute("id");
             tab.innerHTML = project.getName() + tab.innerHTML;
 
@@ -20,7 +20,7 @@ const Tabs = (() => {
                 tab.classList.remove("selected");
             }
 
-            tab.addEventListener("click", () => tabClickedEvent.trigger({ index }));
+            tab.addEventListener("click", (event) => tabClickEvent.trigger({ target: event.target, index }));
 
             tabsContainer.appendChild(tab);
         });
@@ -35,10 +35,10 @@ const Tabs = (() => {
             } else {
                 tab.classList.remove("selected");
             }
-        })
-    }
+        });
+    };
 
-    const getEvents = () => ({ tabClickedEvent });
+    const getEvents = () => ({ tabClickEvent });
 
     return {
         LoadTabs,

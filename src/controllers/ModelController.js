@@ -4,7 +4,7 @@ import TaskModel from "../models/Task";
 import ModalFormView from "../views/ModalForm";
 import TabsView from "../views/Tabs";
 import ProjectView from "../views/Project";
-import TaskView from "../views/Task"
+import TaskView from "../views/Task";
 
 import templateProjects from "../templateProjects";
 
@@ -30,6 +30,15 @@ export default function ModelController(ProjectManager) {
 
     ProjectManagerEvents.projectAddedEvent.addListener(() => {
         TabsView.LoadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+    });
+
+    ProjectManagerEvents.projectDeletedEvent.addListener((event) => {
+        const currentProject = ProjectManager.getCurrentProject();
+        TabsView.LoadTabs(ProjectManager.getProjects(), currentProject);
+
+        if (event.index === ProjectManager.getCurrentProjectIndex()) {
+            ProjectView.loadProject(ProjectManager.getProject(0));
+        }
     });
 
     ProjectManagerEvents.projectSwitchedEvent.addListener((event) => {

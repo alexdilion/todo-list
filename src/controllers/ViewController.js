@@ -9,6 +9,7 @@ export default function ViewController(ProjectManager) {
     const ModalFormEvents = ModalFormView.getEvents();
     const TabEvents = TabsView.getEvents();
     const ProjectEvents = ProjectView.getEvents();
+    const TabButtonEvents = {};
 
     ModalFormEvents.submitFormEvent.addListener((event) => {
         if (!event.data) return;
@@ -22,8 +23,14 @@ export default function ViewController(ProjectManager) {
         }
     });
 
-    TabEvents.tabClickedEvent.addListener((event) => {
-        ProjectManager.setCurrentIndex(event.index);
+    TabEvents.tabClickEvent.addListener((event) => {
+        if (event.target.classList.contains("project-selector")) {
+            ProjectManager.setCurrentIndex(event.index);
+        } else if (event.target.classList.contains("project-delete")) {
+            ProjectManager.deleteProject(event.index);
+        } else if (event.target.classList.contains("project-edit")) {
+            console.log("Editing project")
+        }
     });
 
     ProjectEvents.taskDeleteEvent.addListener((event) => {
