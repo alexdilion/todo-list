@@ -2,14 +2,15 @@ import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import compareAsc from "date-fns/compareAsc";
 import EventManager from "../EventManager";
 
-const Task = (taskTitle, taskProperties = {}) => {
+const Task = (taskProject, taskProperties) => {
     const properties = {
-        title: taskTitle,
+        title: "",
         description: "",
         priority: "none",
         dueDate: null,
         done: false,
     };
+    const parentProject = taskProject;
 
     const propertyChangedEvent = EventManager();
 
@@ -19,6 +20,7 @@ const Task = (taskTitle, taskProperties = {}) => {
 
     const getProperty = (property) => properties[property];
     const getProperties = () => properties;
+    const getParentProject = () => parentProject;
 
     const getDueIn = () => {
         if (properties.dueDate !== null) {

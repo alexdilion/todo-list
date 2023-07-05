@@ -282,7 +282,7 @@ hr {
 }
 
 .placeholder-wrapper img {
-    width: 80%;
+    width: 70%;
 }
 
 #project-tasks:empty ~ .placeholder-wrapper {
