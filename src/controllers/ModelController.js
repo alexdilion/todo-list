@@ -29,16 +29,11 @@ export default function ModelController(ProjectManager) {
     }
 
     ProjectManagerEvents.projectAddedEvent.addListener(() => {
-        TabsView.LoadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+        TabsView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
     });
 
-    ProjectManagerEvents.projectDeletedEvent.addListener((event) => {
-        const currentProject = ProjectManager.getCurrentProject();
-        TabsView.LoadTabs(ProjectManager.getProjects(), currentProject);
-
-        if (event.index === ProjectManager.getCurrentProjectIndex()) {
-            ProjectView.loadProject(ProjectManager.getProject(0));
-        }
+    ProjectManagerEvents.projectDeletedEvent.addListener(() => {
+        TabsView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject())
     });
 
     ProjectManagerEvents.projectSwitchedEvent.addListener((event) => {
@@ -48,7 +43,7 @@ export default function ModelController(ProjectManager) {
     });
 
     ProjectManager.addProjects(templateProjects());
-    TabsView.LoadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+    TabsView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
     ProjectView.loadProject(ProjectManager.getCurrentProject());
 
     initProjectListeners(ProjectManager.getCurrentProject());

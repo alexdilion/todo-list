@@ -6,7 +6,7 @@ const Tabs = (() => {
 
     const tabClickEvent = EventManager();
 
-    const LoadTabs = (projects, currentProject) => {
+    const loadTabs = (projects, currentProject) => {
         tabsContainer.innerHTML = "";
 
         projects.forEach((project, index) => {
@@ -41,7 +41,7 @@ const Tabs = (() => {
     const getEvents = () => ({ tabClickEvent });
 
     return {
-        LoadTabs,
+        loadTabs,
         getEvents,
         updateSelected,
     };
