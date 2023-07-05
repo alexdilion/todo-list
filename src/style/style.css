@@ -114,7 +114,7 @@ hr {
 
 .project-selector {
     font-size: 1.25rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     border: 1px solid var(--black);
     border-radius: 0.5rem;
     user-select: none;
@@ -122,9 +122,49 @@ hr {
     font-family: "Poppins";
     background-color: var(--black-darker);
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     transition-property: background-color border-color color border;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
+}
+
+.selector-actions {
+    display: flex;
+    gap: 0.5rem;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.selector-button {
+    background-color: var(--black);
+    border: none;
+    outline: 1px solid var(--black-lighter);
+    border-radius: 4px;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: outline 0.2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.selector-button span {
+    font-size: 1.25rem;
+    pointer-events: none;
+}
+
+.selector-button:hover {
+    cursor: pointer;
+    outline-color: var(--accent);
+}
+
+.project-selector.selected .selector-actions {
+    opacity: 1;
+    pointer-events: all;
 }
 
 .project-selector:hover {
@@ -133,8 +173,12 @@ hr {
     cursor: pointer;
 }
 
-.project-selector:active,
-.project-selector:focus {
+.project-selector:hover .selector-actions {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.selector-button:active {
     background-color: var(--black-lighter);
 }
 
@@ -150,8 +194,8 @@ hr {
     background-color: var(--accent);
     color: var(--black-darker);
     border: none;
-    padding: .25rem .75rem;
-    border-radius: .5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
     margin: 1rem auto 0;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
@@ -190,7 +234,7 @@ hr {
 
 #greeting-subheader {
     font-size: 1.5rem;
-    text-align: center;
+    overflow: auto;
 }
 
 .project-header span {
@@ -336,8 +380,7 @@ hr {
     top: 50%;
     left: -4px;
     background-color: var(--black-darker);
-    transition: width 0.33s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        background-color 0.33s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: width 0.33s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.33s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 input[type="checkbox"]:checked + .task-content > .task-header {

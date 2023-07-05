@@ -2,6 +2,7 @@ import EventManager from "../EventManager";
 
 const Tabs = (() => {
     const tabsContainer = document.querySelector("#user-projects");
+    const tabTemplate = document.querySelector("#tab-template")
 
     const tabClickedEvent = EventManager();
 
@@ -9,9 +10,9 @@ const Tabs = (() => {
         tabsContainer.innerHTML = "";
 
         projects.forEach((project, index) => {
-            const tab = document.createElement("li");
-            tab.classList.add("user-project", "project-selector");
-            tab.textContent = project.getName();
+            const tab = tabTemplate.cloneNode(true)
+            tab.removeAttribute("id");
+            tab.innerHTML = project.getName() + tab.innerHTML;
 
             if (currentProject.getName() === project.getName()) {
                 tab.classList.add("selected");
@@ -36,8 +37,6 @@ const Tabs = (() => {
             }
         })
     }
-
-    // Remove project method that will get ProjectManager to remove a given project
 
     const getEvents = () => ({ tabClickedEvent });
 
