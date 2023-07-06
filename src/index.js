@@ -15,4 +15,4 @@ flatpickr("#task-due-date", {
     minDate: "today",
 });
 
-const app = Controller();
+Controller();

@@ -11,10 +11,20 @@ const ProjectManager = (() => {
     const getProject = (index) => projects[index];
     const getProjects = () => projects;
 
+    const isValid = (givenProject) => {
+        if (projects.some((project) => project.getName() === givenProject.getName())) return false;
+
+        return true;
+    };
+
     const addProject = (project) => {
+        if (!isValid(project)) return false;
+
         project.setProjectIndex(projects.length);
         projects.push(project);
         projectAddedEvent.trigger({ project });
+
+        return true;
     };
 
     const addProjects = (projectsArray) => {
@@ -43,9 +53,13 @@ const ProjectManager = (() => {
             setCurrentIndex(0);
         }
 
-        console.log(projects.length)
+        console.log(projects.length);
     };
-    
+
+    // const getOverview = (filterFunction) => {
+
+    // }
+
     const isInvalidName = (name) => !!projects.find((project) => project.getName() === name);
     const getCurrentProject = () => projects[currentIndex];
     const getCurrentProjectIndex = () => currentIndex;

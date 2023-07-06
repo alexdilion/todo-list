@@ -15,7 +15,18 @@ export default function ViewController(ProjectManager) {
 
         if (event.type === "addProject") {
             const newProject = ProjectModel(event.data.name);
-            ProjectManager.addProject(newProject);
+            const success = ProjectManager.addProject(newProject);
+
+            if (success) {
+                const currentForm = ModalFormView.getCurrentForm();
+
+                if (!currentForm) return; // currentForm is null when the page initially loads
+
+                ModalFormView.resetInputs(currentForm);
+                currentForm.closest(".modal-overlay").click();
+            } else {
+                // Add invalid style to textbox
+            }
         } else if (event.type === "addTask") {
             const newTask = TaskModel(event.data.title, event.data);
             ProjectManager.getCurrentProject().addTask(newTask);

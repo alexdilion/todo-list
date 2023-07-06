@@ -3,6 +3,7 @@ import EventManager from "../EventManager";
 const ModalForm = (() => {
     const TASK_FORM = document.querySelector("#task-form");
     const PROJECT_FORM = document.querySelector("#project-form");
+    let currentForm = null;
 
     const submitFormEvent = EventManager();
 
@@ -68,6 +69,8 @@ const ModalForm = (() => {
 
         taskFormSubmit.addEventListener("click", (event) => {
             event.preventDefault();
+            currentForm = document.querySelector(".modal.is-open form");
+
             const data = getTaskData();
             if (!data) return;
 
@@ -78,12 +81,14 @@ const ModalForm = (() => {
 
         projectFormSubmit.addEventListener("click", (event) => {
             event.preventDefault();
+            currentForm = document.querySelector(".modal.is-open form");
+
             const data = getProjectData();
             if (!data) return;
 
             submitFormEvent.trigger({ type: "addProject", data });
-            resetInputs(projectFormSubmit);
-            PROJECT_FORM.closest(".modal-overlay").click();
+            // resetInputs(projectFormSubmit);
+            // PROJECT_FORM.closest(".modal-overlay").click();
         });
 
         cancelButtons.forEach((element) => {
@@ -92,9 +97,12 @@ const ModalForm = (() => {
 
                 resetInputs(TASK_FORM);
                 resetInputs(PROJECT_FORM);
+                currentForm = null;
             });
         });
     };
+
+    const getCurrentForm = () => currentForm;
 
     initEvents();
 
@@ -103,6 +111,7 @@ const ModalForm = (() => {
     return {
         resetInputs,
         getEvents,
+        getCurrentForm,
     };
 })();
 
