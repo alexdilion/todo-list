@@ -1,6 +1,5 @@
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import compareAsc from "date-fns/compareAsc";
-import EventManager from "../EventManager";
 
 const Task = (taskProject, taskProperties) => {
     const properties = {
@@ -11,8 +10,6 @@ const Task = (taskProject, taskProperties) => {
         done: false,
     };
     const project = taskProject;
-
-    const propertyChangedEvent = EventManager();
 
     Object.entries(taskProperties).forEach(([property, value]) => {
         properties[property] = value;
@@ -35,17 +32,14 @@ const Task = (taskProject, taskProperties) => {
 
     const setProperty = (property, value) => {
         properties[property] = value;
-        propertyChangedEvent.trigger({ property, value });
+        console.log("Task property changed");
     };
-
-    const getEvents = () => ({ propertyChangedEvent });
 
     return {
         getProperty,
         getProperties,
         getDueIn,
         setProperty,
-        getEvents,
         getParentProject,
     };
 };

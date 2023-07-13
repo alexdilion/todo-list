@@ -1,6 +1,7 @@
-import add from "date-fns/add";
-import Project from "./models/Project";
+import { isToday, isThisWeek, add } from "date-fns";
+
 import Task from "./models/Task";
+import Project from "./models/Project";
 
 function addToNow(time) {
     return add(new Date(Date.now()), time);
@@ -91,5 +92,11 @@ export default function templateProjects() {
 
     Project3.addTasks([p3Task1, p3Task2, p3Task3, p3Task4]);
 
-    return [Project1, Project2, Project3]
+    const overviews = [
+        Project("Today", true, (task) => isToday(task.getProperty("dueDate"))),
+        Project("This Week", true, (task) => isThisWeek(task.getProperty("dueDate"))),
+        Project("All Tasks", true, () => true),
+    ];
+
+    return [...overviews, Project1, Project2, Project3];
 }

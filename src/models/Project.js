@@ -1,22 +1,16 @@
-import EventManager from "../EventManager";
-
-const Project = (projectName, isDefault = false) => {
-    const tasks = [];
+const Project = (projectName, isOverviewProject = false, filterFunction = null) => {
+    let tasks = [];
     let name = projectName;
     let projectIndex = 0;
-    let listening = false;
-    const defaultProject = isDefault;
 
-    const taskAddedEvent = EventManager();
-    const taskDeletedEvent = EventManager();
-    const projectRenamedEvent = EventManager();
+    const overviewProject = isOverviewProject;
+    const filter = filterFunction;
 
     const getTask = (taskIndex) => tasks[taskIndex];
     const getTasks = () => tasks;
 
     const addTask = (task) => {
         tasks.push(task);
-        taskAddedEvent.trigger({ task });
     };
 
     const addTasks = (tasksArray) => {
@@ -24,38 +18,35 @@ const Project = (projectName, isDefault = false) => {
     };
 
     const deleteTask = (taskIndex) => {
-        if (tasks.length < 1) return;
-
-        taskDeletedEvent.trigger({ taskIndex });
         tasks.splice(taskIndex, taskIndex + 1);
+    };
+
+    const clearTasks = () => {
+        tasks = [];
     };
 
     const getName = () => name;
     const setName = (value) => {
+        console.log("Project name changed");
         name = value;
-        projectRenamedEvent.trigger({ name });
     };
 
     const getProjectIndex = () => projectIndex;
     const setProjectIndex = (newIndex) => {
+        console.log("Project index changed");
         projectIndex = newIndex;
     };
 
     const getHeader = () => {
-        if (defaultProject) {
-            if (name === "All Tasks") return { name: "", text: "Here are all of the tasks you need to do" };
-
+        if (overviewProject) {
             return { name: name.toLowerCase(), text: "Here are the tasks you need to do " };
         }
 
         return { name, text: "Here are the tasks in " };
     };
 
-    const getEvents = () => ({ taskAddedEvent, taskDeletedEvent, projectRenamedEvent });
-    const isListening = () => listening;
-    const setListening = () => {
-        listening = true;
-    };
+    const isOverview = () => overviewProject;
+    const getFilter = () => filter;
 
     return {
         getTask,
@@ -63,14 +54,14 @@ const Project = (projectName, isDefault = false) => {
         addTask,
         addTasks,
         deleteTask,
+        clearTasks,
         getProjectIndex,
         setProjectIndex,
         getName,
         setName,
         getHeader,
-        getEvents,
-        isListening,
-        setListening,
+        isOverview,
+        getFilter,
     };
 };
 

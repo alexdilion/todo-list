@@ -22,7 +22,7 @@
                 </a>
                 <hr />
                 <div class="project-container">
-                    <ul id="default-projects">
+                    <ul id="overview-projects">
                         <li class="default-project project-selector">Today</li>
                         <li class="default-project project-selector">This Week</li>
                         <li class="default-project project-selector">All Tasks</li>
@@ -80,23 +80,25 @@
             </main>
         </div>
         <div class="templates display-none" aria-hidden="true">
-            <div class="project-task" id="task-template" data-task-index="">
-                <input type="checkbox" class="task-done" />
-                <div class="task-content">
-                    <h4 class="task-header">Finish To-Do List Project</h4>
-                    <div class="task-info">
-                        <div class="task-priority"></div>
-                        <span class="horizontal-separator"></span>
-                        <div class="task-due-in"></div>
+            <div id="task-template" class="task-container">
+                <div class="project-task">
+                    <input type="checkbox" class="task-done" />
+                    <div class="task-content">
+                        <h4 class="task-header">Finish To-Do List Project</h4>
+                        <div class="task-info">
+                            <div class="task-priority"></div>
+                            <span class="horizontal-separator"></span>
+                            <div class="task-due-in"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="task-actions">
-                    <button class="task-button edit-button button-transition" type="button">
-                        <span class="material-symbols-outlined">edit</span>
-                    </button>
-                    <button class="task-button delete-button button-transition" type="button">
-                        <span class="material-symbols-outlined">delete</span>
-                    </button>
+                    <div class="task-actions">
+                        <button class="task-button edit-button button-transition" type="button">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                        <button class="task-button delete-button button-transition" type="button">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             <li class="user-project project-selector" id="tab-template">

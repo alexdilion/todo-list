@@ -1,83 +1,63 @@
-import EventManager from "../EventManager";
+const ProjectManager = (initialProjects = []) => {
+    const projects = initialProjects;
+    let currentProject = projects[3];
 
-const ProjectManager = (() => {
-    const projects = [];
-    let currentIndex = 0;
+    projects.forEach((project, index) => {
+        project.setProjectIndex(index);
+    });
 
-    const projectAddedEvent = EventManager();
-    const projectSwitchedEvent = EventManager();
-    const projectDeletedEvent = EventManager();
+    const getProject = (projectIndex) => {
+        const project = projects[projectIndex];
+        if (project.isOverview()) {
+            project.clearTasks();
 
-    const getProject = (index) => projects[index];
+            const filteredTasks = projects
+                .filter((p) => !p.isOverview())
+                .map((p) => p.getTasks())
+                .flat()
+                .filter(project.getFilter());
+
+            project.addTasks(filteredTasks);
+        }
+
+        return project;
+    };
+
     const getProjects = () => projects;
 
-    const isValid = (givenProject) => {
-        if (projects.some((project) => project.getName() === givenProject.getName())) return false;
-
-        return true;
-    };
-
     const addProject = (project) => {
-        if (!isValid(project)) return false;
-
-        project.setProjectIndex(projects.length);
         projects.push(project);
-        projectAddedEvent.trigger({ project });
-
-        return true;
     };
 
-    const addProjects = (projectsArray) => {
-        projectsArray.forEach((project) => addProject(project));
-    };
-
-    const setCurrentIndex = (newIndex) => {
-        if (newIndex === currentIndex) return;
-
-        currentIndex = newIndex;
-        projectSwitchedEvent.trigger({ project: projects[currentIndex], currentIndex });
-    };
-
-    const deleteProject = (index) => {
-        if (projects.length <= 1) return;
-
-        projects.splice(index, 1);
-
-        if (index === currentIndex && currentIndex !== 0) {
-            setCurrentIndex(index - 1);
+    const deleteProject = (projectIndex) => {
+        if (currentProject.getProjectIndex() === projectIndex) {
+            currentProject = projects[projectIndex - 1];
         }
 
-        projectDeletedEvent.trigger({ index });
+        projects.splice(projectIndex, 1);
 
-        if (index === 0) {
-            setCurrentIndex(0);
+        projects.forEach((project, index) => {
+            project.setProjectIndex(index);
+        });
+
+        if (projects.length === projects.filter((project) => project.isOverview()).length) {
+            [currentProject] = projects;
         }
-
-        console.log(projects.length);
     };
 
-    // const getOverview = (filterFunction) => {
-
-    // }
-
-    const isInvalidName = (name) => !!projects.find((project) => project.getName() === name);
-    const getCurrentProject = () => projects[currentIndex];
-    const getCurrentProjectIndex = () => currentIndex;
-
-    const getEvents = () => ({ projectAddedEvent, projectSwitchedEvent, projectDeletedEvent });
+    const getCurrentProject = () => getProject(currentProject.getProjectIndex());
+    const setCurrentProject = (index) => {
+        currentProject = projects[index];
+    };
 
     return {
         getProject,
         getProjects,
-        getCurrentProject,
-        setCurrentIndex,
-        deleteProject,
         addProject,
-        addProjects,
-        isInvalidName,
-        getEvents,
-        getCurrentProjectIndex,
+        deleteProject,
+        getCurrentProject,
+        setCurrentProject,
     };
-})();
+};
 
 export default ProjectManager;
