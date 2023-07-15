@@ -26,7 +26,7 @@ const ProjectManager = (initialProjects = []) => {
     const getProjects = () => projects;
 
     const addProject = (project) => {
-        project.setProjectIndex(projects.length)
+        project.setProjectIndex(projects.length);
         projects.push(project);
     };
 

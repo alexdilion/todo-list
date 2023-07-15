@@ -69,21 +69,3 @@ export function createTask(task) {
 export function removeTask(taskIndex) {
     document.querySelector("#project-tasks").childNodes[taskIndex].remove();
 }
-
-// EVENTS
-
-// taskContainer.addEventListener("click", (event) => {
-//     const { target } = event;
-//     const task = target.closest(".task-container");
-//     if (!task) return;
-
-//     // const taskIndex = task.getAttribute("data-task-index");
-
-//     if (target.classList.contains("edit-button")) {
-//         console.log("task edit");
-//     } else if (target.classList.contains("delete-button")) {
-//         console.log("task delete");
-//     } else if (target.classList.contains("task-done")) {
-//         console.log("task toggle");
-//     }
-// });

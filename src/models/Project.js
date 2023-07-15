@@ -10,6 +10,10 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     const getTasks = () => tasks;
 
     const addTask = (task) => {
+        if (!overviewProject) {
+            task.setProperty("index", tasks.length);
+        }
+
         tasks.push(task);
     };
 
@@ -18,7 +22,17 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     };
 
     const deleteTask = (taskIndex) => {
-        tasks.splice(taskIndex, taskIndex + 1);
+        if (overviewProject) {
+            const task = getTask(taskIndex);
+            task.getParentProject().deleteTask(task.getProperty("index"));
+            return;
+        }
+
+        tasks.splice(taskIndex, 1);
+
+        tasks.forEach((task, index) => {
+            task.setProperty("index", index);
+        });
     };
 
     const clearTasks = () => {

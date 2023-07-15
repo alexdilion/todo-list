@@ -25,7 +25,7 @@ function onProjectFormClick() {
     ProjectManager.setCurrentProject(ProjectManager.getProjects().length - 1);
     ProjectView.loadProject(project);
     TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
-    TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex())
+    TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex());
 
     return true;
 }
@@ -43,6 +43,25 @@ function onTabClick(event, tabIndex) {
         ProjectManager.deleteProject(tabIndex);
         TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
         ProjectView.loadProject(ProjectManager.getCurrentProject());
+    }
+}
+
+function onTaskClick(event) {
+    const { target } = event;
+    const task = target.closest(".task-container");
+
+    if (!task) return;
+
+    const taskIndex = [...elements.tasksContainer.childNodes].indexOf(task);
+    const project = ProjectManager.getCurrentProject();
+
+    if (target.classList.contains("edit-button")) {
+        console.log("task edit");
+    } else if (target.classList.contains("delete-button")) {
+        project.deleteTask(taskIndex);
+        ProjectView.loadProject(ProjectManager.getCurrentProject());
+    } else if (target.classList.contains("task-done")) {
+        console.log("task toggle");
     }
 }
 
@@ -64,3 +83,5 @@ elements.projectFormSubmit.addEventListener("click", (event) => {
         onTabClick(event, tabIndex);
     });
 });
+
+elements.tasksContainer.addEventListener("click", onTaskClick);

@@ -8,6 +8,7 @@ const Task = (taskProject, taskProperties) => {
         priority: "none",
         dueDate: null,
         done: false,
+        index: null,
     };
     const project = taskProject;
 
@@ -32,7 +33,6 @@ const Task = (taskProject, taskProperties) => {
 
     const setProperty = (property, value) => {
         properties[property] = value;
-        console.log("Task property changed");
     };
 
     return {

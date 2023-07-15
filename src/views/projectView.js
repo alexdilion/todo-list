@@ -12,7 +12,7 @@ export function loadProject(project) {
     if (project.getName() !== "All Tasks") {
         subheaderElement.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
     } else {
-        subheaderElement.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do"
+        subheaderElement.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
     }
 
     tasks.forEach((task) => {

@@ -56,23 +56,25 @@ export function resetInputs(form) {
 }
 
 export function onModalShow(modal, trigger) {
-    if (trigger.getAttribute("data-form-type") === "new") {
+    const type = trigger.getAttribute("data-form-type");
+
+    if (type === "new") {
         if (modal.id === "project-form-modal") {
-            modal.querySelector("#project-form-modal-title").textContent = "New Project";
-            modal.querySelector("#add-project").textContent = "Add";
+            elements.projectFormHeader.textContent = "New Project";
+            elements.projectFormSubmit.textContent = "Add";
         } else if (modal.id === "task-form-modal") {
-            modal.querySelector("#task-form-modal-title").textContent = "New Task";
-            modal.querySelector("#add-task").textContent = "Add";
+            elements.taskFormHeader.textContent = "New Task";
+            elements.taskFormSubmit.textContent = "Add";
         }
     }
 
-    if (trigger.getAttribute("data-form-type") === "edit") {
+    if (type === "edit") {
         if (modal.id === "project-form-modal") {
-            modal.querySelector("#project-form-modal-title").textContent = "Edit Project";
-            modal.querySelector("#add-project").textContent = "Edit"
+            elements.projectFormHeader.textContent = "Edit Project";
+            elements.projectFormSubmit.textContent = "Edit";
         } else if (modal.id === "task-form-modal") {
-            modal.querySelector("#task-form-modal-title").textContent = "Edit Task";
-            modal.querySelector("#add-task").textContent = "Edit"
+            elements.taskFormHeader.textContent = "Edit Task";
+            elements.taskFormSubmit.textContent = "Edit";
         }
     }
 }
