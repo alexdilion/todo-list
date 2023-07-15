@@ -15,7 +15,7 @@ const elements = {
 
     taskFormModal: document.querySelector("#task-form-modal"),
     taskForm: document.querySelector("#task-form"),
-    taskFormTitle: document.querySelector("#task-done"),
+    taskFormTitle: document.querySelector("#task-title"),
     taskFormDescription: document.querySelector("#task-description"),
     taskFormPriority: document.querySelector("#task-priority"),
     taskFormDone: document.querySelector("#task-done"),

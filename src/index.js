@@ -17,8 +17,26 @@ import elements from "./views/elements";
 
 const ProjectManager = InitialLoad();
 
-function editProjectProperties(project, formData) {
-    project.setName(formData.name);
+function editProjectProperties(project, properties) {
+    project.setName(properties.name);
+}
+
+function editTaskProperties(task, properties) {
+    Object.keys(properties).forEach((property) => {
+        task.setProperty(property, properties[property]);
+    });
+}
+
+function onTaskFormSubmit() {
+    const formData = FormView.getFormData(elements.taskForm);
+    const { taskForm } = elements;
+
+    if (taskForm.getAttribute("data-form-type") === "edit") {
+        editTaskProperties(ProjectManager.getCurrentProject().getTask(+elements.taskForm.getAttribute("data-task-index")), formData);
+        return true;
+    }
+
+    return false;
 }
 
 function onProjectFormSubmit() {
@@ -26,7 +44,7 @@ function onProjectFormSubmit() {
     const { projectForm } = elements;
 
     if (projectForm.getAttribute("data-form-type") === "edit") {
-        editProjectProperties(ProjectManager.getProject(projectForm.getAttribute("data-project-index")), formData);
+        editProjectProperties(ProjectManager.getProject(+projectForm.getAttribute("data-project-index")), formData);
         return true;
     }
 
@@ -75,6 +93,10 @@ function onTaskClick(event) {
     if (target.classList.contains("edit-button")) {
         MicroModal.show(elements.taskFormModal.id);
         FormView.onModalShow(elements.taskFormModal, target);
+
+        const task = project.getTask(taskIndex);
+        FormView.loadTaskProperties(task);
+        elements.projectForm.setAttribute("data-task-index", taskIndex);
     } else if (target.classList.contains("delete-button")) {
         project.deleteTask(taskIndex);
         ProjectView.loadProject(ProjectManager.getCurrentProject());
@@ -95,6 +117,16 @@ elements.projectFormSubmit.addEventListener("click", (event) => {
     }
 });
 
+elements.taskFormSubmit.addEventListener("click", (event) => {
+    event.preventDefault();
+    const success = onTaskFormSubmit();
+
+    if (success) {
+        elements.taskForm.closest(".modal-overlay").click();
+        ProjectView.loadProject(ProjectManager.getCurrentProject());
+    }
+});
+
 [elements.projectsContainer, elements.overviewsContainer].forEach((container) => {
     container.addEventListener("click", (event) => {
         const tab = event.target.closest(".project-selector");
@@ -106,3 +138,11 @@ elements.projectFormSubmit.addEventListener("click", (event) => {
 });
 
 elements.tasksContainer.addEventListener("click", onTaskClick);
+
+[...document.querySelectorAll("[data-micromodal-close]")].forEach((element) => {
+    element.addEventListener("click", (event) => {
+        if (!event.target.hasAttribute("data-micromodal-close")) return;
+        FormView.resetInputs(elements.projectForm);
+        FormView.resetInputs(elements.taskForm);
+    });
+});

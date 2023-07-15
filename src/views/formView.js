@@ -31,6 +31,7 @@ export function getFormData(form) {
 }
 
 export function resetInputs(form) {
+    console.log("working")
     const textInputs = form.querySelectorAll("input[type='text'], textarea");
     const comboBoxes = form.querySelectorAll("select");
     const checkBoxes = form.querySelectorAll("input[type='checkbox']");
@@ -57,6 +58,17 @@ export function resetInputs(form) {
 
 export function loadProjectProperties(project) {
     elements.projectFormName.value = project.getName();
+}
+
+export function loadTaskProperties(task) {
+    const properties = task.getProperties();
+
+    elements.taskFormTitle.value = properties.title;
+    elements.taskFormDescription.value = properties.description ? properties.description : "";
+    elements.taskFormPriority.value = properties.priority;
+    elements.taskFormDone.checked = properties.done;
+    // eslint-disable-next-line no-underscore-dangle
+    if (properties.dueDate) elements.taskFormDueDate._flatpickr.setDate(properties.dueDate);
 }
 
 export function onModalShow(modal, trigger) {
