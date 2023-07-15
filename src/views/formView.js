@@ -54,3 +54,25 @@ export function resetInputs(form) {
     // eslint-disable-next-line no-underscore-dangle
     taskFormDueDate._flatpickr.clear();
 }
+
+export function onModalShow(modal, trigger) {
+    if (trigger.getAttribute("data-form-type") === "new") {
+        if (modal.id === "project-form-modal") {
+            modal.querySelector("#project-form-modal-title").textContent = "New Project";
+            modal.querySelector("#add-project").textContent = "Add";
+        } else if (modal.id === "task-form-modal") {
+            modal.querySelector("#task-form-modal-title").textContent = "New Task";
+            modal.querySelector("#add-task").textContent = "Add";
+        }
+    }
+
+    if (trigger.getAttribute("data-form-type") === "edit") {
+        if (modal.id === "project-form-modal") {
+            modal.querySelector("#project-form-modal-title").textContent = "Edit Project";
+            modal.querySelector("#add-project").textContent = "Edit"
+        } else if (modal.id === "task-form-modal") {
+            modal.querySelector("#task-form-modal-title").textContent = "Edit Task";
+            modal.querySelector("#add-task").textContent = "Edit"
+        }
+    }
+}

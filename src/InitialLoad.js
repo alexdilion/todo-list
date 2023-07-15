@@ -3,7 +3,7 @@ import flatpickr from "flatpickr";
 
 import { loadProject } from "./views/projectView";
 import { loadTabs } from "./views/tabView";
-import { resetInputs } from "./views/formView";
+import { resetInputs, onModalShow } from "./views/formView";
 import ProjectManager from "./models/ProjectManager";
 import templateProjects from "./template";
 
@@ -12,7 +12,7 @@ export default function load() {
     loadTabs(projects.getProjects(), projects.getCurrentProject());
     loadProject(projects.getCurrentProject());
 
-    MicroModal.init({onClose: resetInputs});
+    MicroModal.init({ onClose: resetInputs, onShow: onModalShow });
 
     flatpickr("#task-due-date", {
         enableTime: true,

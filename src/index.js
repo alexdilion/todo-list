@@ -25,6 +25,7 @@ function onProjectFormClick() {
     ProjectManager.setCurrentProject(ProjectManager.getProjects().length - 1);
     ProjectView.loadProject(project);
     TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+    TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex())
 
     return true;
 }

@@ -33,7 +33,6 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
 
     const getProjectIndex = () => projectIndex;
     const setProjectIndex = (newIndex) => {
-        console.log("Project index changed");
         projectIndex = newIndex;
     };
 

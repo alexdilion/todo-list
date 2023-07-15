@@ -1,6 +1,6 @@
 const ProjectManager = (initialProjects = []) => {
     const projects = initialProjects;
-    let currentProject = projects[3];
+    let currentProject = projects[0];
 
     projects.forEach((project, index) => {
         project.setProjectIndex(index);
@@ -26,6 +26,7 @@ const ProjectManager = (initialProjects = []) => {
     const getProjects = () => projects;
 
     const addProject = (project) => {
+        project.setProjectIndex(projects.length)
         projects.push(project);
     };
 

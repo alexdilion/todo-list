@@ -41,7 +41,7 @@ export function loadTabs(projects, currentProject) {
 }
 
 export function updateSelected(currentProjectIndex) {
-    const tabs = document.querySelectorAll(".project-selector");
+    const tabs = document.querySelectorAll(".main-wrapper .project-selector");
 
     tabs.forEach((tab, index) => {
         if (index === currentProjectIndex) {
