@@ -2,6 +2,8 @@ import "./style/style.css";
 import "./style/form.css";
 import "flatpickr/dist/flatpickr.css";
 
+import MicroModal from "micromodal";
+
 import Project from "./models/Project";
 import Task from "./models/Task";
 
@@ -15,8 +17,18 @@ import elements from "./views/elements";
 
 const ProjectManager = InitialLoad();
 
-function onProjectFormClick() {
+function editProjectProperties(project, formData) {
+    project.setName(formData.name);
+}
+
+function onProjectFormSubmit() {
     const formData = FormView.getFormData(elements.projectForm);
+    const { projectForm } = elements;
+
+    if (projectForm.getAttribute("data-form-type") === "edit") {
+        editProjectProperties(ProjectManager.getProject(projectForm.getAttribute("data-project-index")), formData);
+        return true;
+    }
 
     if (!formData) return false;
 
@@ -38,7 +50,12 @@ function onTabClick(event, tabIndex) {
         ProjectView.loadProject(ProjectManager.getCurrentProject());
         TabView.updateSelected(tabIndex);
     } else if (target.classList.contains("project-edit")) {
-        console.log("edit project");
+        MicroModal.show(elements.projectFormModal.id);
+        FormView.onModalShow(elements.projectFormModal, target);
+
+        const project = ProjectManager.getProject(tabIndex);
+        FormView.loadProjectProperties(project);
+        elements.projectForm.setAttribute("data-project-index", tabIndex);
     } else if (target.classList.contains("project-delete")) {
         ProjectManager.deleteProject(tabIndex);
         TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
@@ -56,7 +73,8 @@ function onTaskClick(event) {
     const project = ProjectManager.getCurrentProject();
 
     if (target.classList.contains("edit-button")) {
-        console.log("task edit");
+        MicroModal.show(elements.taskFormModal.id);
+        FormView.onModalShow(elements.taskFormModal, target);
     } else if (target.classList.contains("delete-button")) {
         project.deleteTask(taskIndex);
         ProjectView.loadProject(ProjectManager.getCurrentProject());
@@ -68,10 +86,12 @@ function onTaskClick(event) {
 
 elements.projectFormSubmit.addEventListener("click", (event) => {
     event.preventDefault();
-    const success = onProjectFormClick();
+    const success = onProjectFormSubmit();
 
     if (success) {
         elements.projectForm.closest(".modal-overlay").click();
+        TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+        ProjectView.updateHeader(ProjectManager.getCurrentProject());
     }
 });
 

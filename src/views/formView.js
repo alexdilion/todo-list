@@ -55,6 +55,10 @@ export function resetInputs(form) {
     taskFormDueDate._flatpickr.clear();
 }
 
+export function loadProjectProperties(project) {
+    elements.projectFormName.value = project.getName();
+}
+
 export function onModalShow(modal, trigger) {
     const type = trigger.getAttribute("data-form-type");
 
@@ -62,9 +66,11 @@ export function onModalShow(modal, trigger) {
         if (modal.id === "project-form-modal") {
             elements.projectFormHeader.textContent = "New Project";
             elements.projectFormSubmit.textContent = "Add";
+            elements.projectForm.setAttribute("data-form-type", "new");
         } else if (modal.id === "task-form-modal") {
             elements.taskFormHeader.textContent = "New Task";
             elements.taskFormSubmit.textContent = "Add";
+            elements.taskForm.setAttribute("data-form-type", "new");
         }
     }
 
@@ -72,9 +78,11 @@ export function onModalShow(modal, trigger) {
         if (modal.id === "project-form-modal") {
             elements.projectFormHeader.textContent = "Edit Project";
             elements.projectFormSubmit.textContent = "Edit";
+            elements.projectForm.setAttribute("data-form-type", "edit");
         } else if (modal.id === "task-form-modal") {
             elements.taskFormHeader.textContent = "Edit Task";
             elements.taskFormSubmit.textContent = "Edit";
+            elements.taskForm.setAttribute("data-form-type", "edit");
         }
     }
 }

@@ -7,13 +7,13 @@ const elements = {
     projectsContainer: document.querySelector("#user-projects"),
     tabTemplate: document.querySelector("#tab-template"),
 
-    projectModal: document.querySelector("#project-form-modal"),
     projectForm: document.querySelector("#project-form"),
+    projectFormModal: document.querySelector("#project-form-modal"),
     projectFormHeader: document.querySelector("#project-form-modal-title"),
     projectFormName: document.querySelector("#project-name"),
     projectFormSubmit: document.querySelector("#add-project"),
 
-    taskModal: document.querySelector("#task-form-modal"),
+    taskFormModal: document.querySelector("#task-form-modal"),
     taskForm: document.querySelector("#task-form"),
     taskFormTitle: document.querySelector("#task-done"),
     taskFormDescription: document.querySelector("#task-description"),

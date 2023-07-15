@@ -19,3 +19,13 @@ export function loadProject(project) {
         createTask(task);
     });
 }
+
+export function updateHeader(project) {
+    const subheader = project.getHeader();
+
+    if (project.getName() !== "All Tasks") {
+        subheaderElement.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
+    } else {
+        subheaderElement.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
+    }
+}
