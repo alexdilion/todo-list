@@ -48,11 +48,11 @@ function onTabClick(event, tabIndex) {
 
 function onTaskClick(event) {
     const { target } = event;
-    const task = target.closest(".task-container");
+    const taskElement = target.closest(".task-container");
 
-    if (!task) return;
+    if (!taskElement) return;
 
-    const taskIndex = [...elements.tasksContainer.childNodes].indexOf(task);
+    const taskIndex = [...elements.tasksContainer.childNodes].indexOf(taskElement);
     const project = ProjectManager.getCurrentProject();
 
     if (target.classList.contains("edit-button")) {
@@ -61,7 +61,8 @@ function onTaskClick(event) {
         project.deleteTask(taskIndex);
         ProjectView.loadProject(ProjectManager.getCurrentProject());
     } else if (target.classList.contains("task-done")) {
-        console.log("task toggle");
+        const task = project.getTask(taskIndex);
+        task.setProperty("done", target.checked);
     }
 }
 

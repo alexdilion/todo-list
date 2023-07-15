@@ -21,7 +21,7 @@ const elements = {
     taskFormDone: document.querySelector("#task-done"),
     taskFormDueDate: document.querySelector("#task-due-date"),
     taskFormSubmit: document.querySelector("#add-task"),
-    taskFormHeader: document.querySelector("task-form-modal-title"),
+    taskFormHeader: document.querySelector("#task-form-modal-title"),
 };
 
 export default elements;
