@@ -2,12 +2,13 @@
 import elements from "./elements";
 import { createTask } from "./taskView";
 
-const { tasksContainer, subheaderElement } = elements;
+const { tasksContainer, subheaderElement, sidebarContainer } = elements;
 
 export function loadProject(project) {
     const tasks = project.getTasks();
     const subheader = project.getHeader();
     tasksContainer.innerHTML = "";
+    sidebarContainer.setAttribute("data-current-project", project.getProjectIndex());
 
     if (project.getName() !== "All Tasks") {
         subheaderElement.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;

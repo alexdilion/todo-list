@@ -31,19 +31,29 @@ const ProjectManager = (initialProjects = []) => {
     };
 
     const deleteProject = (projectIndex) => {
-        if (currentProject.getProjectIndex() === projectIndex) {
-            currentProject = projects[projectIndex - 1];
-        }
-
         projects.splice(projectIndex, 1);
 
         projects.forEach((project, index) => {
             project.setProjectIndex(index);
         });
 
-        if (projects.length === projects.filter((project) => project.isOverview()).length) {
-            [currentProject] = projects;
+        const numOverviews = projects.filter((project) => project.isOverview()).length;
+        const numProjects = projects.length - numOverviews;
+        let newIndex;
+
+        if (currentProject.getProjectIndex() === projectIndex) {
+            if (projectIndex > numOverviews) {
+                newIndex = projectIndex - 1;
+            } else if (projectIndex === numOverviews && numProjects > 1) {
+                newIndex = projectIndex;
+            } else {
+                newIndex = 0;
+            }
+        } else {
+            newIndex = currentProject.getProjectIndex();
         }
+
+        currentProject = projects[newIndex];
     };
 
     const getCurrentProject = () => getProject(currentProject.getProjectIndex());

@@ -3,6 +3,7 @@ const elements = {
 
     tasksContainer: document.querySelector("#project-tasks"),
 
+    sidebarContainer: document.querySelector(".sidebar"),
     overviewsContainer: document.querySelector("#overview-projects"),
     projectsContainer: document.querySelector("#user-projects"),
     tabTemplate: document.querySelector("#tab-template"),

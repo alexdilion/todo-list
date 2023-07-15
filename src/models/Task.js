@@ -1,5 +1,4 @@
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
-import compareAsc from "date-fns/compareAsc";
+import { formatDistanceToNowStrict, compareAsc, isValid } from "date-fns";
 
 const Task = (taskProject, taskProperties) => {
     const properties = {
@@ -21,7 +20,7 @@ const Task = (taskProject, taskProperties) => {
     const getParentProject = () => project;
 
     const getDueIn = () => {
-        if (properties.dueDate !== null) {
+        if (isValid(properties.dueDate)) {
             const relativeDate = compareAsc(properties.dueDate, Date.now());
             const distanceFromNow = formatDistanceToNowStrict(properties.dueDate);
 

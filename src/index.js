@@ -31,30 +31,40 @@ function onTaskFormSubmit() {
     const formData = FormView.getFormData(elements.taskForm);
     const { taskForm } = elements;
 
+    if (!taskForm) return false;
+
     if (taskForm.getAttribute("data-form-type") === "edit") {
         editTaskProperties(ProjectManager.getCurrentProject().getTask(+elements.taskForm.getAttribute("data-task-index")), formData);
         return true;
     }
 
-    return false;
+    const project = ProjectManager.getCurrentProject();
+
+    if (project.isOverview()) return false;
+
+    const task = Task(project, formData);
+    project.addTask(task);
+    TaskView.createTask(task);
+
+    return true;
 }
 
 function onProjectFormSubmit() {
     const formData = FormView.getFormData(elements.projectForm);
     const { projectForm } = elements;
 
+    if (!formData) return false;
+
     if (projectForm.getAttribute("data-form-type") === "edit") {
         editProjectProperties(ProjectManager.getProject(+projectForm.getAttribute("data-project-index")), formData);
         return true;
     }
 
-    if (!formData) return false;
-
     const project = Project(formData.name);
     ProjectManager.addProject(project);
     ProjectManager.setCurrentProject(ProjectManager.getProjects().length - 1);
     ProjectView.loadProject(project);
-    TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+    TabView.loadTabs(ProjectManager.getProjects());
     TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex());
 
     return true;
@@ -76,7 +86,7 @@ function onTabClick(event, tabIndex) {
         elements.projectForm.setAttribute("data-project-index", tabIndex);
     } else if (target.classList.contains("project-delete")) {
         ProjectManager.deleteProject(tabIndex);
-        TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+        TabView.loadTabs(ProjectManager.getProjects());
         ProjectView.loadProject(ProjectManager.getCurrentProject());
     }
 }
@@ -112,7 +122,7 @@ elements.projectFormSubmit.addEventListener("click", (event) => {
 
     if (success) {
         elements.projectForm.closest(".modal-overlay").click();
-        TabView.loadTabs(ProjectManager.getProjects(), ProjectManager.getCurrentProject());
+        TabView.loadTabs(ProjectManager.getProjects());
         ProjectView.updateHeader(ProjectManager.getCurrentProject());
     }
 });

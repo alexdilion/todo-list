@@ -56,6 +56,10 @@ export function resetInputs(form) {
     taskFormDueDate._flatpickr.clear();
 }
 
+export function loadProjectSelectOptions(projects) {
+    
+}
+
 export function loadProjectProperties(project) {
     elements.projectFormName.value = project.getName();
 }

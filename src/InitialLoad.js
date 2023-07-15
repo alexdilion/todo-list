@@ -9,7 +9,7 @@ import templateProjects from "./template";
 
 export default function load() {
     const projects = ProjectManager(templateProjects());
-    loadTabs(projects.getProjects(), projects.getCurrentProject());
+    loadTabs(projects.getProjects());
     loadProject(projects.getCurrentProject());
 
     MicroModal.init({ onShow: onModalShow });
