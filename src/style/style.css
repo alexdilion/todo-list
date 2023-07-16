@@ -366,13 +366,18 @@ hr {
 
 .task-content {
     flex: 1 1 0;
+    height: 100%;
+    display: grid;
 }
 
 .task-header {
-    display: inline;
+    /* display: inline; */
+    display: flex;
+    align-items: center;
     font-size: 1.25rem;
     transition: color 0.33s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
+    width: fit-content;
 }
 
 .task-header::before {

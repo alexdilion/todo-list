@@ -33,6 +33,9 @@ export function updateTask(task, taskElement) {
         dueInElement.hidden = false;
     }
 
+    taskElement.querySelector(".task-info").hidden = false;
+    taskElement.querySelector(".task-info").style = "";
+
     switch (true) {
         case taskProperties.priority !== "none" && taskProperties.dueDate !== null:
             updatePriority();
@@ -49,9 +52,9 @@ export function updateTask(task, taskElement) {
             priorityElement.hidden = true;
             break;
         default:
-            separatorElement.hidden = true;
-            priorityElement.hidden = true;
-            dueInElement.hidden = true;
+            console.log(taskElement.querySelector(".task-info"));
+            taskElement.querySelector(".task-info").hidden = true;
+            taskElement.querySelector(".task-info").style = "display: none";
             break;
     }
 
@@ -59,8 +62,7 @@ export function updateTask(task, taskElement) {
 }
 
 export function createTask(task) {
-    const taskTemplate = document.querySelector("#task-template");
-    const taskElement = taskTemplate.cloneNode(true);
+    const taskElement = elements.taskTemplate.cloneNode(true);
 
     taskElement.removeAttribute("id");
     updateTask(task, taskElement);

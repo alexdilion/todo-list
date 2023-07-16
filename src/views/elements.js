@@ -17,6 +17,7 @@ const elements = {
     projectFormSubmit: document.querySelector("#add-project"),
 
     taskFormModal: document.querySelector("#task-form-modal"),
+    taskTemplate: document.querySelector("#task-template"),
     taskForm: document.querySelector("#task-form"),
     taskFormTitle: document.querySelector("#task-title"),
     taskFormProjectContainer: document.querySelector("#project-select-container"),

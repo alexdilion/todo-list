@@ -63,7 +63,6 @@ export function loadProjectSelectOptions(projects) {
         if (project.isOverview()) return;
 
         const option = document.createElement("option");
-        // option.innerHTML = `<option value="${index}">${project.getName()}</option>`;
         option.value = index;
         option.textContent = project.getName();
         elements.taskFormProject.appendChild(option);
@@ -74,15 +73,36 @@ export function loadProjectProperties(project) {
     elements.projectFormName.value = project.getName();
 }
 
-export function loadTaskProperties(task) {
+export function loadTaskProperties(task, projects = false) {
     const properties = task.getProperties();
 
     elements.taskFormTitle.value = properties.title;
     elements.taskFormDescription.value = properties.description ? properties.description : "";
     elements.taskFormPriority.value = properties.priority;
     elements.taskFormDone.checked = properties.done;
-    // eslint-disable-next-line no-underscore-dangle
-    if (properties.dueDate) elements.taskFormDueDate._flatpickr.setDate(properties.dueDate);
+
+    if (projects) {
+        elements.taskFormProject.innerHTML = "";
+
+        projects.forEach((project, index) => {
+            if (project.isOverview()) return;
+
+            const option = document.createElement("option");
+            option.value = index;
+            option.textContent = project.getName();
+
+            if (task.getParentProject().getProjectIndex() === index) {
+                option.selected = true;
+            }
+
+            elements.taskFormProject.appendChild(option);
+        });
+    }
+
+    if (properties.dueDate) {
+        // eslint-disable-next-line no-underscore-dangle
+        elements.taskFormDueDate._flatpickr.setDate(properties.dueDate);
+    }
 }
 
 export function onModalShow(modal, trigger) {
