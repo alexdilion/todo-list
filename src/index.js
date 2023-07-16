@@ -139,6 +139,14 @@ function onTaskAddClick() {
     elements.taskFormProjectContainer.classList.add("display-none");
 }
 
+function onSortChange(event) {
+    const sortType = event.target.value;
+    const project = ProjectManager.getCurrentProject();
+
+    project.setSortType(sortType);
+    ProjectView.loadProject(project);
+}
+
 elements.projectFormSubmit.addEventListener("click", (event) => {
     event.preventDefault();
     const success = onProjectFormSubmit();
@@ -181,3 +189,4 @@ elements.tasksContainer.addEventListener("click", onTaskClick);
 });
 
 elements.newTaskButton.addEventListener("click", onTaskAddClick);
+elements.sortTasksSelector.addEventListener("change", onSortChange);

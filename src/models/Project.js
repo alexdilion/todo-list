@@ -1,3 +1,5 @@
+import sortFunctions from "./sortFunctions";
+
 const Project = (projectName, isOverviewProject = false, filterFunction = null) => {
     let tasks = [];
     let name = projectName;
@@ -5,16 +7,29 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
 
     const overviewProject = isOverviewProject;
     const filter = filterFunction;
+    let sortType = "Unfinished first";
 
     const getTask = (taskIndex) => tasks[taskIndex];
     const getTasks = () => tasks;
 
-    const addTask = (task) => {
-        if (!overviewProject) {
-            task.setProperty("index", tasks.length);
-        }
+    const sortTasks = () => {
+        sortFunctions[sortType](tasks);
 
+        if (!overviewProject) {
+            tasks.forEach((task, index) => {
+                task.setProperty("index", index);
+            });
+        }
+    };
+
+    const setSortType = (value) => {
+        sortType = value;
+        sortTasks();
+    };
+
+    const addTask = (task) => {
         tasks.push(task);
+        sortTasks();
     };
 
     const addTasks = (tasksArray) => {
@@ -74,6 +89,7 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         getHeader,
         isOverview,
         getFilter,
+        setSortType,
     };
 };
 

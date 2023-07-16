@@ -46,6 +46,7 @@ export function updateTask(task, taskElement) {
         case taskProperties.dueDate !== null:
             updateDueIn();
             separatorElement.hidden = true;
+            priorityElement.hidden = true;
             break;
         default:
             separatorElement.hidden = true;
