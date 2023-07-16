@@ -38,14 +38,14 @@ export default function templateProjects() {
     });
 
     const p1Task5 = Task(Project1, {
-        title: "Vacuum and dust room",
+        title: "Clean room",
         priority: "medium",
         dueDate: addToNow({ days: 3 }),
     });
 
     const p1Task6 = Task(Project1, {
         title: "Pay rent",
-        priority: "high",
+        priority: "medium",
         dueDate: addToNow({ weeks: 2 }),
     });
 

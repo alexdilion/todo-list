@@ -1,8 +1,5 @@
 import elements from "./elements";
 
-const { taskFormTitle, taskFormDescription, taskFormPriority, taskFormDone, taskFormDueDate } = elements;
-const { projectFormName } = elements;
-
 function isValidForm(form) {
     return form.querySelectorAll("input[required]:invalid").length === 0;
 }
@@ -13,25 +10,28 @@ export function getFormData(form) {
     const formData = {};
 
     if (form.id === "task-form") {
-        formData.title = taskFormTitle.value;
-        formData.description = taskFormDescription.value;
-        formData.priority = taskFormPriority.value;
-        formData.done = taskFormDone.checked;
+        formData.title = elements.taskFormTitle.value;
+        formData.description = elements.taskFormDescription.value;
+        formData.priority = elements.taskFormPriority.value;
+        formData.done = elements.taskFormDone.checked;
+        formData.dueDate = null;
+        formData.projectIndex = null;
 
-        if (taskFormDueDate.value !== "") {
-            formData.dueDate = new Date(taskFormDueDate.value);
-        } else {
-            formData.dueDate = null;
+        if (elements.taskFormDueDate.value !== "") {
+            formData.dueDate = new Date(elements.taskFormDueDate.value);
+        }
+
+        if (!elements.taskFormProjectContainer.classList.contains("display-none")) {
+            formData.projectIndex = elements.taskFormProject.value;
         }
     } else if (form.id === "project-form") {
-        formData.name = projectFormName.value;
+        formData.name = elements.projectFormName.value;
     }
 
     return formData;
 }
 
 export function resetInputs(form) {
-    console.log("working")
     const textInputs = form.querySelectorAll("input[type='text'], textarea");
     const comboBoxes = form.querySelectorAll("select");
     const checkBoxes = form.querySelectorAll("input[type='checkbox']");
@@ -53,11 +53,21 @@ export function resetInputs(form) {
     });
 
     // eslint-disable-next-line no-underscore-dangle
-    taskFormDueDate._flatpickr.clear();
+    elements.taskFormDueDate._flatpickr.clear();
 }
 
 export function loadProjectSelectOptions(projects) {
-    
+    elements.taskFormProject.innerHTML = "";
+
+    projects.forEach((project, index) => {
+        if (project.isOverview()) return;
+
+        const option = document.createElement("option");
+        // option.innerHTML = `<option value="${index}">${project.getName()}</option>`;
+        option.value = index;
+        option.textContent = project.getName();
+        elements.taskFormProject.appendChild(option);
+    });
 }
 
 export function loadProjectProperties(project) {

@@ -40,7 +40,17 @@ function onTaskFormSubmit() {
 
     const project = ProjectManager.getCurrentProject();
 
-    if (project.isOverview()) return false;
+    if (project.isOverview()) {
+        const selectedProject = ProjectManager.getProject(formData.projectIndex);
+
+        const task = Task(selectedProject, formData);
+        selectedProject.addTask(task);
+        TaskView.createTask(task);
+
+        ProjectView.loadProject(project);
+
+        return true;
+    }
 
     const task = Task(project, formData);
     project.addTask(task);
@@ -88,6 +98,7 @@ function onTabClick(event, tabIndex) {
         ProjectManager.deleteProject(tabIndex);
         TabView.loadTabs(ProjectManager.getProjects());
         ProjectView.loadProject(ProjectManager.getCurrentProject());
+        TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex());
     }
 }
 
@@ -114,6 +125,18 @@ function onTaskClick(event) {
         const task = project.getTask(taskIndex);
         task.setProperty("done", target.checked);
     }
+}
+
+function onTaskAddClick() {
+    const currentProject = ProjectManager.getCurrentProject();
+
+    if (currentProject.isOverview()) {
+        FormView.loadProjectSelectOptions(ProjectManager.getProjects());
+        elements.taskFormProjectContainer.classList.remove("display-none");
+        return;
+    }
+
+    elements.taskFormProjectContainer.classList.add("display-none");
 }
 
 elements.projectFormSubmit.addEventListener("click", (event) => {
@@ -156,3 +179,5 @@ elements.tasksContainer.addEventListener("click", onTaskClick);
         FormView.resetInputs(elements.taskForm);
     });
 });
+
+elements.newTaskButton.addEventListener("click", onTaskAddClick);

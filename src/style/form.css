@@ -60,7 +60,7 @@
 
 #task-form > .flex-row {
     flex-direction: row;
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 span[aria-label="asterisk"],
@@ -77,10 +77,10 @@ span[aria-label="required"] {
     border: 1px solid var(--grey);
     border-radius: 0.5rem;
     font-size: 1rem;
-    padding: .5rem;
+    padding: 0.5rem;
     background-color: var(--white);
     font-family: "Nunito", sans-serif;
-    transition: border-color .2s ease-in-out, background-color .2s ease-in-out;
+    transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .fancy-textbox:hover {
@@ -103,4 +103,8 @@ span[aria-label="required"] {
 
 .form-buttons button {
     font-size: 1.25rem;
+}
+
+#project-select-container.display-none {
+    display: none;
 }

@@ -1,6 +1,8 @@
 const elements = {
-    subheaderElement: document.querySelector("#greeting-subheader"),
+    projectSubheader: document.querySelector("#greeting-subheader"),
 
+    newTaskButton: document.querySelector("#new-task"),
+    sortTasksSelector: document.querySelector("#project-sort"),
     tasksContainer: document.querySelector("#project-tasks"),
 
     sidebarContainer: document.querySelector(".sidebar"),
@@ -17,6 +19,8 @@ const elements = {
     taskFormModal: document.querySelector("#task-form-modal"),
     taskForm: document.querySelector("#task-form"),
     taskFormTitle: document.querySelector("#task-title"),
+    taskFormProjectContainer: document.querySelector("#project-select-container"),
+    taskFormProject: document.querySelector("#task-project"),
     taskFormDescription: document.querySelector("#task-description"),
     taskFormPriority: document.querySelector("#task-priority"),
     taskFormDone: document.querySelector("#task-done"),

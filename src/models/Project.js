@@ -41,7 +41,6 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
 
     const getName = () => name;
     const setName = (value) => {
-        console.log("Project name changed");
         name = value;
     };
 

@@ -2,7 +2,7 @@
 import elements from "./elements";
 import { createTask } from "./taskView";
 
-const { tasksContainer, subheaderElement, sidebarContainer } = elements;
+const { tasksContainer, projectSubheader, sidebarContainer } = elements;
 
 export function loadProject(project) {
     const tasks = project.getTasks();
@@ -11,9 +11,9 @@ export function loadProject(project) {
     sidebarContainer.setAttribute("data-current-project", project.getProjectIndex());
 
     if (project.getName() !== "All Tasks") {
-        subheaderElement.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
+        projectSubheader.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
     } else {
-        subheaderElement.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
+        projectSubheader.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
     }
 
     tasks.forEach((task) => {
@@ -25,8 +25,8 @@ export function updateHeader(project) {
     const subheader = project.getHeader();
 
     if (project.getName() !== "All Tasks") {
-        subheaderElement.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
+        projectSubheader.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
     } else {
-        subheaderElement.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
+        projectSubheader.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
     }
 }

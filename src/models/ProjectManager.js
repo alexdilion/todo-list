@@ -44,7 +44,7 @@ const ProjectManager = (initialProjects = []) => {
         if (currentProject.getProjectIndex() === projectIndex) {
             if (projectIndex > numOverviews) {
                 newIndex = projectIndex - 1;
-            } else if (projectIndex === numOverviews && numProjects > 1) {
+            } else if (projectIndex === numOverviews && numProjects > 0) {
                 newIndex = projectIndex;
             } else {
                 newIndex = 0;
