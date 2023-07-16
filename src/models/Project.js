@@ -7,7 +7,7 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
 
     const overviewProject = isOverviewProject;
     const filter = filterFunction;
-    let sortType = "Unfinished first";
+    let sortType = "Ascending dates";
 
     const getTask = (taskIndex) => tasks[taskIndex];
     const getTasks = () => tasks;
@@ -26,6 +26,8 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         sortType = value;
         sortTasks();
     };
+
+    const getSortType = () => sortType;
 
     const addTask = (task) => {
         tasks.push(task);
@@ -90,6 +92,7 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         isOverview,
         getFilter,
         setSortType,
+        getSortType,
     };
 };
 

@@ -18,7 +18,7 @@ export function loadProject(project) {
         createTask(task);
     });
 
-    const selectedOption = elements.sortTasksSelector.value;
+    const selectedOption = project.getSortType();
     elements.sortTasksSelector.innerHTML = "";
     Object.keys(sortFunctions).forEach((key) => {
         const option = document.createElement("option");
