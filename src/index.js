@@ -117,14 +117,8 @@ function onTaskClick(event) {
 
         const task = project.getTask(taskIndex);
 
-        if (project.isOverview()) {
-            FormView.loadTaskProperties(task, ProjectManager.getProjects());
-            elements.taskFormProjectContainer.classList.remove("display-none");
-        } else {
-            FormView.loadTaskProperties(task);
-            elements.taskFormProjectContainer.classList.add("display-none");
-        }
-
+        FormView.loadTaskProperties(task);
+        elements.taskFormProjectContainer.classList.add("display-none");
         elements.taskForm.setAttribute("data-task-index", taskIndex);
     } else if (target.classList.contains("delete-button")) {
         project.deleteTask(taskIndex);
