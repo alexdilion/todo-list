@@ -342,26 +342,26 @@ hr {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.5rem;
-    grid-auto-rows: 1fr;
 }
 
 #project-tasks:empty {
     display: none;
 }
 
+.task-container {
+    border: 1px solid var(--grey);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
 .project-task {
     width: 100%;
-    padding: 0.5rem 1rem;
     position: relative;
-    height: 100%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-
-    border: 1px solid var(--grey);
-    border-radius: 0.5rem;
 }
 
 .task-content {
@@ -474,4 +474,8 @@ input[type="checkbox"]:checked + .task-content > .task-header::before {
 input[type="checkbox"] {
     accent-color: var(--accent);
     color: var(--white);
+}
+
+.task-description {
+    margin-top: 1rem;
 }
