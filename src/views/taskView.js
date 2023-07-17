@@ -16,6 +16,8 @@ export function updateTask(task, taskElement) {
         taskElement.querySelector(".accordion-container").classList.add("accordion-visible");
     }
 
+    taskElement.querySelector(".show-button").hidden = task.getProperty("description") === "";
+
     function updatePriority() {
         priorityElement.classList.add(`${taskProperties.priority}-priority`);
         priorityElement.textContent = taskProperties.priority;

@@ -448,8 +448,7 @@ input[type="checkbox"]:checked + .task-content > .task-header::before {
     border-radius: 0.5rem;
     border: 1px solid var(--black);
     background-color: var(--white);
-    display: grid;
-    place-content: center;
+    position: relative;
 }
 
 .task-button span {
@@ -457,6 +456,12 @@ input[type="checkbox"]:checked + .task-content > .task-header::before {
     transform-origin: center;
     transition: transform 0.2s cubic-bezier(0.17, 0.84, 0.44, 1);
     pointer-events: none;
+
+    position: absolute;
+    transform-origin: center;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
 }
 
 .task-button:hover span {
@@ -481,12 +486,12 @@ input[type="checkbox"] {
     display: grid;
     grid-template-rows: 0fr;
 
-    transition: grid-template-rows .25s;
+    transition: grid-template-rows 0.25s;
 }
 
 .task-description {
     overflow: hidden;
-    transition: margin .25s;
+    transition: margin 0.25s;
 }
 
 .accordion-visible > .task-description {
