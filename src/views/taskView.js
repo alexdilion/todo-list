@@ -12,6 +12,10 @@ export function updateTask(task, taskElement) {
     taskElement.querySelector(".task-header").textContent = taskProperties.title;
     taskElement.querySelector(".task-description").textContent = taskProperties.description;
 
+    if (task.getProperty("descriptionToggled")) {
+        taskElement.querySelector(".accordion-container").classList.add("accordion-visible");
+    }
+
     function updatePriority() {
         priorityElement.classList.add(`${taskProperties.priority}-priority`);
         priorityElement.textContent = taskProperties.priority;
@@ -53,7 +57,6 @@ export function updateTask(task, taskElement) {
             priorityElement.hidden = true;
             break;
         default:
-            console.log(taskElement.querySelector(".task-info"));
             taskElement.querySelector(".task-info").hidden = true;
             taskElement.querySelector(".task-info").style = "display: none";
             break;

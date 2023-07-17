@@ -4,6 +4,7 @@ const Task = (taskProject, taskProperties) => {
     const properties = {
         title: "",
         description: "",
+        descriptionToggled: false,
         priority: "none",
         dueDate: null,
         done: false,

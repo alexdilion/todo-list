@@ -85,6 +85,8 @@ function onTabClick(event, tabIndex) {
 
     if (target.classList.contains("project-selector")) {
         ProjectManager.setCurrentProject(tabIndex);
+        ProjectManager.getCurrentProject().hideTaskDescriptions();
+
         ProjectView.loadProject(ProjectManager.getCurrentProject());
         TabView.updateSelected(tabIndex);
     } else if (target.classList.contains("project-edit")) {
@@ -110,12 +112,11 @@ function onTaskClick(event) {
 
     const taskIndex = [...elements.tasksContainer.childNodes].indexOf(taskElement);
     const project = ProjectManager.getCurrentProject();
+    const task = project.getTask(taskIndex);
 
     if (target.classList.contains("edit-button")) {
         MicroModal.show(elements.taskFormModal.id);
         FormView.onModalShow(elements.taskFormModal, target);
-
-        const task = project.getTask(taskIndex);
 
         FormView.loadTaskProperties(task);
         elements.taskFormProjectContainer.classList.add("display-none");
@@ -124,13 +125,13 @@ function onTaskClick(event) {
         project.deleteTask(taskIndex);
         ProjectView.loadProject(ProjectManager.getCurrentProject());
     } else if (target.classList.contains("task-done")) {
-        const task = project.getTask(taskIndex);
         task.setProperty("done", target.checked);
     } else if (target.classList.contains("show-button")) {
         const descriptionElement = taskElement.querySelector(".task-description");
 
         if (descriptionElement.textContent !== "") {
             taskElement.querySelector(".accordion-container").classList.toggle("accordion-visible");
+            task.setProperty("descriptionToggled", !task.getProperty("descriptionToggled"));
         }
     }
 }

@@ -77,6 +77,12 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     const isOverview = () => overviewProject;
     const getFilter = () => filter;
 
+    const hideTaskDescriptions = () => {
+        tasks.forEach((task) => {
+            task.setProperty("descriptionToggled", false);
+        });
+    };
+
     const updateOverview = (projects) => {
         if (!overviewProject) return;
 
@@ -108,6 +114,7 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         setSortType,
         getSortType,
         updateOverview,
+        hideTaskDescriptions,
     };
 };
 
