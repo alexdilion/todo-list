@@ -10,6 +10,7 @@ export function updateTask(task, taskElement) {
     const doneElement = taskElement.querySelector(".task-done");
 
     taskElement.querySelector(".task-header").textContent = taskProperties.title;
+    taskElement.querySelector(".task-description").textContent = taskProperties.description;
 
     function updatePriority() {
         priorityElement.classList.add(`${taskProperties.priority}-priority`);

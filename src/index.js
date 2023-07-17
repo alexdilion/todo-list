@@ -126,6 +126,12 @@ function onTaskClick(event) {
     } else if (target.classList.contains("task-done")) {
         const task = project.getTask(taskIndex);
         task.setProperty("done", target.checked);
+    } else if (target.classList.contains("show-button")) {
+        const descriptionElement = taskElement.querySelector(".task-description");
+
+        if (descriptionElement.textContent !== "") {
+            descriptionElement.classList.toggle("display-none");
+        }
     }
 }
 
