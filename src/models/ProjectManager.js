@@ -8,16 +8,9 @@ const ProjectManager = (initialProjects = []) => {
 
     const getProject = (projectIndex) => {
         const project = projects[projectIndex];
+
         if (project.isOverview()) {
-            project.clearTasks();
-
-            const filteredTasks = projects
-                .filter((p) => !p.isOverview())
-                .map((p) => p.getTasks())
-                .flat()
-                .filter(project.getFilter());
-
-            project.addTasks(filteredTasks);
+            project.updateOverview(projects);
         }
 
         return project;

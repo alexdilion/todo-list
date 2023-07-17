@@ -4,10 +4,10 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     let tasks = [];
     let name = projectName;
     let projectIndex = 0;
+    let sortType = "Descending priority";
 
     const overviewProject = isOverviewProject;
     const filter = filterFunction;
-    let sortType = "Ascending dates";
 
     const getTask = (taskIndex) => tasks[taskIndex];
     const getTasks = () => tasks;
@@ -77,6 +77,20 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     const isOverview = () => overviewProject;
     const getFilter = () => filter;
 
+    const updateOverview = (projects) => {
+        if (!overviewProject) return;
+
+        clearTasks();
+
+        const filteredTasks = projects
+            .filter((p) => !p.isOverview())
+            .map((p) => p.getTasks())
+            .flat()
+            .filter(filter);
+
+        addTasks(filteredTasks);
+    };
+
     return {
         getTask,
         getTasks,
@@ -93,6 +107,7 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         getFilter,
         setSortType,
         getSortType,
+        updateOverview,
     };
 };
 
