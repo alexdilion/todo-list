@@ -130,7 +130,7 @@ function onTaskClick(event) {
         const descriptionElement = taskElement.querySelector(".task-description");
 
         if (descriptionElement.textContent !== "") {
-            descriptionElement.classList.toggle("display-none");
+            taskElement.querySelector(".accordion-container").classList.toggle("accordion-visible");
         }
     }
 }

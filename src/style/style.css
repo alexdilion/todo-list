@@ -352,6 +352,7 @@ hr {
     border: 1px solid var(--grey);
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
+    /* overflow-y: clip; */
 }
 
 .project-task {
@@ -476,6 +477,22 @@ input[type="checkbox"] {
     color: var(--white);
 }
 
+.accordion-container {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    transition: grid-template-rows .25s;
+}
+
 .task-description {
+    overflow: hidden;
+    transition: margin .25s;
+}
+
+.accordion-visible > .task-description {
     margin-top: 1rem;
+}
+
+.accordion-visible {
+    grid-template-rows: 1fr;
 }
