@@ -519,11 +519,6 @@ input[type="checkbox"]:checked + .task-content > .task-header::before {
     background-color: var(--white-grey);
 }
 
-input[type="checkbox"] {
-    accent-color: var(--accent);
-    color: var(--white);
-}
-
 .accordion-container {
     display: grid;
     grid-template-rows: 0fr;
@@ -542,4 +537,49 @@ input[type="checkbox"] {
 
 .accordion-visible {
     grid-template-rows: 1fr;
+}
+
+
+input[type="checkbox"] {
+    all: unset;
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid var(--grey);
+    border-radius: 8px;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+input[type="checkbox"]:hover::before {
+    border-color: var(--accent);
+}
+
+input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    height: 0rem;
+    width: 0rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--accent);
+    border-radius: 4px;
+
+    transition: height 0.33s ease-in-out, width 0.33s ease-in-out;
+}
+
+input[type="checkbox"]:checked::after {
+    height: 1rem;
+    width: 1rem;
 }
