@@ -15,6 +15,7 @@
     --orange: #f39c12;
 
     --sidebar-width: 300px;
+    --sidebar-offset: 0px;
 }
 
 *,
@@ -35,9 +36,15 @@ body {
 .main-wrapper {
     min-height: 100vh;
     display: grid;
-    grid-template: 1fr / var(--sidebar-width) 1fr;
+    grid-template-rows: 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-areas: "sidebar project-content";
     position: relative;
+    transition: grid-template-columns 0.33s;
+}
+
+.main-wrapper.expanded {
+    grid-template-columns: 0px 1fr;
 }
 
 h1,
@@ -72,6 +79,35 @@ hr {
     color: var(--white);
     border-radius: 0 1rem 1rem 0;
     padding: 1rem;
+    transition: transform 0.33s;
+}
+
+.sidebar.collapsed {
+    transform: translateX(calc(var(--sidebar-width) * -1));
+}
+
+.sidebar-collapse-button {
+    position: absolute;
+    top: 5%;
+    left: calc(100% + 1.25rem);
+    transform: translate(-50%, -50%);
+
+    padding: .25rem;
+    background-color: var(--black-darker);
+    border: none;
+    border-radius: 0 999px 999px 0;
+    display: flex;
+    place-content: center;
+}
+
+.sidebar-collapse-button span {
+    font-size: 3rem;
+    transition: transform .33s;
+    transform: scaleX(-1);
+}
+
+.sidebar.collapsed .sidebar-collapse-button span {
+    transform: scaleX(1);
 }
 
 .sidebar * {

@@ -156,6 +156,11 @@ function onSortChange(event) {
     ProjectView.loadProject(project);
 }
 
+function toggleSidebar() {
+    elements.sidebarContainer.classList.toggle("collapsed");
+    elements.mainWrapper.classList.toggle("expanded");
+}
+
 elements.projectFormSubmit.addEventListener("click", (event) => {
     event.preventDefault();
     const success = onProjectFormSubmit();
@@ -199,3 +204,4 @@ elements.tasksContainer.addEventListener("click", onTaskClick);
 
 elements.newTaskButton.addEventListener("click", onTaskAddClick);
 elements.sortTasksSelector.addEventListener("change", onSortChange);
+elements.sidebarCollapse.addEventListener("click", toggleSidebar);

@@ -1,11 +1,13 @@
 const elements = {
     projectSubheader: document.querySelector("#greeting-subheader"),
+    mainWrapper: document.querySelector(".main-wrapper"),
 
     newTaskButton: document.querySelector("#new-task"),
     sortTasksSelector: document.querySelector("#project-sort"),
     tasksContainer: document.querySelector("#project-tasks"),
 
     sidebarContainer: document.querySelector(".sidebar"),
+    sidebarCollapse: document.querySelector(".sidebar-collapse-button"),
     overviewsContainer: document.querySelector("#overview-projects"),
     projectsContainer: document.querySelector("#user-projects"),
     tabTemplate: document.querySelector("#tab-template"),
