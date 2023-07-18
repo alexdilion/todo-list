@@ -11,7 +11,7 @@ export function getFormData(form) {
 
     if (form.id === "task-form") {
         formData.title = elements.taskFormTitle.value;
-        formData.description = elements.taskFormDescription.value;
+        formData.description = elements.taskFormDescription.value.trim();
         formData.priority = elements.taskFormPriority.value;
         formData.done = elements.taskFormDone.checked;
         formData.dueDate = null;
