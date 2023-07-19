@@ -31,11 +31,11 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
 
     const addTask = (task) => {
         tasks.push(task);
-        sortTasks();
     };
 
     const addTasks = (tasksArray) => {
         tasksArray.forEach((task) => addTask(task));
+        sortTasks();
     };
 
     const deleteTask = (taskIndex) => {
@@ -115,6 +115,7 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         getSortType,
         updateOverview,
         hideTaskDescriptions,
+        sortTasks,
     };
 };
 

@@ -45,6 +45,7 @@ function onTaskFormSubmit() {
 
         const task = Task(selectedProject, formData);
         selectedProject.addTask(task);
+        selectedProject.sortTasks();
         TaskView.createTask(task);
 
         ProjectView.loadProject(project);
@@ -54,6 +55,7 @@ function onTaskFormSubmit() {
 
     const task = Task(project, formData);
     project.addTask(task);
+    project.sortTasks();
     TaskView.createTask(task);
 
     return true;
@@ -108,7 +110,7 @@ function onTaskClick(event) {
     const { target } = event;
     const taskElement = target.closest(".task-container");
 
-    if (!taskElement) return;
+    if (!taskElement || taskElement === target) return;
 
     const taskIndex = [...elements.tasksContainer.childNodes].indexOf(taskElement);
     const project = ProjectManager.getCurrentProject();

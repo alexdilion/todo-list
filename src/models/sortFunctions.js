@@ -6,27 +6,43 @@ const priorityValues = {
 };
 
 function ascendingDate(taskA, taskB) {
-    return taskA.getProperty("dueDate") > taskB.getProperty("dueDate");
+    if (taskA.getProperty("dueDate") === taskB.getProperty("dueDate")) return 0;
+
+    const result = taskA.getProperty("dueDate") > taskB.getProperty("dueDate");
+
+    return result ? 1 : -1;
 }
 
 function descendingDate(taskA, taskB) {
-    return taskA.getProperty("dueDate") < taskB.getProperty("dueDate");
+    if (taskA.getProperty("dueDate") === taskB.getProperty("dueDate")) return 0;
+
+    const result = taskA.getProperty("dueDate") < taskB.getProperty("dueDate");
+
+    return result ? 1 : -1;
 }
 
 function ascendingPriority(taskA, taskB) {
-    return priorityValues[taskA.getProperty("priority")] > priorityValues[taskB.getProperty("priority")];
+    if (priorityValues[taskA.getProperty("priority")] === priorityValues[taskB.getProperty("priority")]) return 0;
+
+    const result = priorityValues[taskA.getProperty("priority")] > priorityValues[taskB.getProperty("priority")];
+
+    return result ? 1 : -1;
 }
 
 function descendingPriority(taskA, taskB) {
-    return priorityValues[taskA.getProperty("priority")] < priorityValues[taskB.getProperty("priority")];
+    if (priorityValues[taskA.getProperty("priority")] === priorityValues[taskB.getProperty("priority")]) return 0;
+
+    const result = priorityValues[taskA.getProperty("priority")] < priorityValues[taskB.getProperty("priority")];
+
+    return result ? 1 : -1;
 }
 
-function finishedFirst(taskA, taskB) {
-    return taskB.getProperty("done");
+function finishedFirst(taskA) {
+    return !taskA.getProperty("done") ? 1 : -1;
 }
 
-function unfinishedFirst(taskA, taskB) {
-    return taskA.getProperty("done");
+function unfinishedFirst(taskA) {
+    return taskA.getProperty("done") ? 1 : -1;
 }
 
 const sortFunctions = {
