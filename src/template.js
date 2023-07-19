@@ -2,6 +2,7 @@ import { isToday, isThisWeek, add } from "date-fns";
 
 import Task from "./models/Task";
 import Project from "./models/Project";
+import Overview from "./models/Overview";
 
 function addToNow(time) {
     return add(new Date(Date.now()), time);
@@ -136,9 +137,9 @@ export default function templateProjects() {
     Project3.addTasks([p3Task1, p3Task5, p3Task2, p3Task3, p3Task4, p3Task6]);
 
     const overviews = [
-        Project("Today", true, (task) => isToday(task.getProperty("dueDate"))),
-        Project("This Week", true, (task) => isThisWeek(task.getProperty("dueDate"))),
-        Project("All Tasks", true, () => true),
+        Overview("Today", (task) => isToday(task.getProperty("dueDate"))),
+        Overview("This Week", (task) => isThisWeek(task.getProperty("dueDate"))),
+        Overview("All Tasks"),
     ];
 
     return [...overviews, Project1, Project2, Project3];

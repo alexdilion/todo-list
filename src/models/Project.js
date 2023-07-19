@@ -1,13 +1,10 @@
 import sortFunctions from "./sortFunctions";
 
-const Project = (projectName, isOverviewProject = false, filterFunction = null) => {
+const Project = (projectName) => {
     let tasks = [];
     let name = projectName;
     let projectIndex = 0;
     let sortType = "Descending priority";
-
-    const overviewProject = isOverviewProject;
-    const filter = filterFunction;
 
     const getTask = (taskIndex) => tasks[taskIndex];
     const getTasks = () => tasks;
@@ -15,11 +12,9 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     const sortTasks = () => {
         sortFunctions[sortType](tasks);
 
-        if (!overviewProject) {
-            tasks.forEach((task, index) => {
-                task.setProperty("index", index);
-            });
-        }
+        tasks.forEach((task, index) => {
+            task.setProperty("index", index);
+        });
     };
 
     const setSortType = (value) => {
@@ -39,12 +34,6 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
     };
 
     const deleteTask = (taskIndex) => {
-        if (overviewProject) {
-            const task = getTask(taskIndex);
-            task.getParentProject().deleteTask(task.getProperty("index"));
-            return;
-        }
-
         tasks.splice(taskIndex, 1);
 
         tasks.forEach((task, index) => {
@@ -66,35 +55,14 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         projectIndex = newIndex;
     };
 
-    const getHeader = () => {
-        if (overviewProject) {
-            return { name: name.toLowerCase(), text: "Here are the tasks you need to do " };
-        }
+    const getHeader = () => ({ name, text: "Here are the tasks in " });
 
-        return { name, text: "Here are the tasks in " };
-    };
-
-    const isOverview = () => overviewProject;
-    const getFilter = () => filter;
+    const isOverview = () => false;
 
     const hideTaskDescriptions = () => {
         tasks.forEach((task) => {
             task.setProperty("descriptionToggled", false);
         });
-    };
-
-    const updateOverview = (projects) => {
-        if (!overviewProject) return;
-
-        clearTasks();
-
-        const filteredTasks = projects
-            .filter((p) => !p.isOverview())
-            .map((p) => p.getTasks())
-            .flat()
-            .filter(filter);
-
-        addTasks(filteredTasks);
     };
 
     return {
@@ -110,10 +78,8 @@ const Project = (projectName, isOverviewProject = false, filterFunction = null) 
         setName,
         getHeader,
         isOverview,
-        getFilter,
         setSortType,
         getSortType,
-        updateOverview,
         hideTaskDescriptions,
         sortTasks,
     };
