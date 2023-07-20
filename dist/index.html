@@ -15,7 +15,7 @@
         <link rel="icon" type="image/x-icon" href="favicon.svg" />
     </head>
     <body>
-        <div class="main-wrapper">
+        <div class="main-wrapper" hidden>
             <aside class="sidebar">
                 <a href="#" class="logo-container">
                     <span class="material-symbols-outlined logo-image">checklist</span>
@@ -83,6 +83,25 @@
                     </div>
                 </div>
             </main>
+        </div>
+        <div class="signup-page">
+            <div class="signup-container">
+                <div class="signup-logo">
+                    <span class="material-symbols-outlined logo-image">checklist</span>
+                    <h1 class="logo-text">Listify</h1>
+                </div>
+                <form>
+                    <div class="signup-input">
+                        <label for="username">Your name</label>
+                        <input type="text" id="username" class="fancy-textbox" />
+                    </div>
+                    <hr />
+                    <div class="signup-submit-buttons">
+                        <button type="submit" id="empty-template-button" class="project-button ">Empty Template</button>
+                        <button type="submit" id="demo-template-button" class="project-button ">Demo Template</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="templates display-none" aria-hidden="true">
             <div id="task-template" class="task-container">

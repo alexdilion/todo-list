@@ -40,7 +40,11 @@ body {
     grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-areas: "sidebar project-content";
     position: relative;
-    transition: grid-template-columns 0.33s;
+    transition: grid-template-columns 0.33s, opacity .33s ease-in-out;
+}
+
+div[hidden] {
+    display: none;
 }
 
 .main-wrapper.expanded {
@@ -60,7 +64,9 @@ span {
 }
 
 hr {
-    color: var(--accent);
+    background-color: var(--accent);
+    border: none;
+    height: 1px;
 }
 
 .display-none {
@@ -128,7 +134,6 @@ hr {
 .logo-container {
     display: flex;
     align-items: center;
-    justify-content: center;
     padding-right: 15px;
     gap: 0.5rem;
     text-decoration: none;
@@ -560,7 +565,7 @@ input[type="checkbox"]::before {
     height: 1.5rem;
     width: 1.5rem;
     border: 2px solid var(--grey);
-    border-radius: 8px;
+    border-radius: 55px;
     transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
@@ -577,7 +582,7 @@ input[type="checkbox"]::after {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--accent);
-    border-radius: 4px;
+    border-radius: 55px;
 
     transition: height 0.33s ease-in-out, width 0.33s ease-in-out;
 }
@@ -585,4 +590,67 @@ input[type="checkbox"]::after {
 input[type="checkbox"]:checked::after {
     height: 1rem;
     width: 1rem;
+}
+
+.signup-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transition: opacity .33s ease-in-out;
+}
+
+.signup-container {
+    max-width: 400px;
+    flex: 1;
+    margin: 0 1rem;
+}
+
+.signup-container .signup-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-right: 1rem;
+}
+
+.signup-input {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-input label {
+    margin-left: 0.5rem;
+}
+
+.signup-submit-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 0.5rem;
+}
+
+.signup-submit-buttons button {
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent);
+    border: 1px solid transparent;
+    color: var(--white);
+
+    transition: background-color 0.33s ease-in-out, border-color 0.33s ease-in-out;
+}
+
+.signup-submit-buttons button:hover {
+    border-color: var(--black);
+}
+
+.signup-submit-buttons button:active {
+    background-color: var(--accent-darker);
+}
+
+.signup-container hr {
+    background-color: var(--grey);
+    margin: 2rem 1rem;
 }
