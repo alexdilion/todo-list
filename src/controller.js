@@ -46,6 +46,8 @@ export default function app() {
         Object.keys(properties).forEach((property) => {
             task.setProperty(property, properties[property]);
         });
+
+        localStorage.editTask(task);
     }
 
     function onTaskFormSubmit() {
@@ -70,6 +72,7 @@ export default function app() {
             TaskView.createTask(task);
 
             ProjectView.loadProject(project);
+            localStorage.addTask(task);
 
             return true;
         }
@@ -78,6 +81,7 @@ export default function app() {
         project.addTask(task);
         project.sortTasks();
         TaskView.createTask(task);
+        localStorage.addTask(task);
 
         return true;
     }
@@ -148,10 +152,12 @@ export default function app() {
             elements.taskFormProjectContainer.classList.add("display-none");
             elements.taskForm.setAttribute("data-task-index", taskIndex);
         } else if (target.classList.contains("delete-button")) {
+            localStorage.deleteTask(task);
             project.deleteTask(taskIndex);
+
             ProjectView.loadProject(ProjectManager.getCurrentProject());
         } else if (target.classList.contains("task-done")) {
-            task.setProperty("done", target.checked);
+            editTaskProperties(task, { done: target.checked });
         } else if (target.classList.contains("show-button")) {
             const descriptionElement = taskElement.querySelector(".task-description");
 

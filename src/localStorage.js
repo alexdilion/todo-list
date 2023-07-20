@@ -2,6 +2,8 @@ import Task from "./models/Task";
 import Project from "./models/Project";
 import Overview from "./models/Overview";
 
+const storage = window.localStorage;
+
 function convertTask(task) {
     const taskData = {};
     taskData.projectIndex = task.getParentProject().getProjectIndex();
@@ -45,10 +47,6 @@ function parseProject(jsonProject, index) {
 }
 
 export function loadData() {
-    const storage = window.localStorage;
-
-    if (!storage) return false;
-
     const username = storage.getItem("username");
 
     const jsonProjects = JSON.parse(storage.getItem("projects"));
@@ -62,10 +60,6 @@ export function loadData() {
 }
 
 export function saveData(username, projects) {
-    const storage = window.localStorage;
-
-    if (!storage) return;
-
     storage.setItem("username", username);
 
     const convertedProjects = [];
@@ -92,10 +86,6 @@ export function saveData(username, projects) {
 }
 
 export function addProject(project) {
-    const storage = window.localStorage;
-
-    if (!storage) return;
-
     const projects = JSON.parse(storage.getItem("projects"));
     projects.push(convertProject(project));
 
@@ -103,10 +93,6 @@ export function addProject(project) {
 }
 
 export function editProject(project) {
-    const storage = window.localStorage;
-
-    if (!storage) return;
-
     const projects = JSON.parse(storage.getItem("projects"));
     projects[project.getProjectIndex()] = convertProject(project);
 
@@ -114,17 +100,13 @@ export function editProject(project) {
 }
 
 export function removeProject(projectIndex) {
-    const storage = window.localStorage;
-
-    if (!storage) return;
-
     const projects = JSON.parse(storage.getItem("projects"));
     projects.splice(projectIndex, 1);
 
     storage.setItem("projects", JSON.stringify(projects));
 
     const updatedTasks = JSON.parse(storage.getItem("tasks")).filter((t) => t.projectIndex !== projectIndex);
-    
+
     updatedTasks.forEach((t) => {
         if (t.projectIndex > projectIndex) {
             t.projectIndex -= 1;
@@ -132,4 +114,33 @@ export function removeProject(projectIndex) {
     });
 
     storage.setItem("tasks", JSON.stringify(updatedTasks));
+}
+
+export function addTask(task) {
+    const tasks = JSON.parse(storage.getItem("tasks"));
+    tasks.push(convertTask(task));
+
+    storage.setItem("tasks", JSON.stringify(tasks));
+}
+
+export function editTask(task) {
+    const tasks = JSON.parse(storage.getItem("tasks"));
+    const projectIndex = task.getParentProject().getProjectIndex();
+    const projectTasks = tasks.filter((t) => t.projectIndex === projectIndex);
+    const otherTasks = tasks.filter((t) => t.projectIndex !== projectIndex);
+
+    projectTasks[task.getProperty("index")] = convertTask(task);
+
+    storage.setItem("tasks", JSON.stringify([...projectTasks, ...otherTasks]));
+}
+
+export function deleteTask(task) {
+    const tasks = JSON.parse(storage.getItem("tasks"));
+    const projectIndex = task.getParentProject().getProjectIndex();
+    const projectTasks = tasks.filter((t) => t.projectIndex === projectIndex);
+    const otherTasks = tasks.filter((t) => t.projectIndex !== projectIndex);
+
+    projectTasks.splice(task.getProperty("index"), 1);
+
+    storage.setItem("tasks", JSON.stringify([...projectTasks, ...otherTasks]));
 }
