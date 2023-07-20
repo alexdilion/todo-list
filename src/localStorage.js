@@ -90,3 +90,46 @@ export function saveData(username, projects) {
     storage.setItem("projects", JSON.stringify(convertedProjects));
     storage.setItem("tasks", JSON.stringify(convertedTasks));
 }
+
+export function addProject(project) {
+    const storage = window.localStorage;
+
+    if (!storage) return;
+
+    const projects = JSON.parse(storage.getItem("projects"));
+    projects.push(convertProject(project));
+
+    storage.setItem("projects", JSON.stringify(projects));
+}
+
+export function editProject(project) {
+    const storage = window.localStorage;
+
+    if (!storage) return;
+
+    const projects = JSON.parse(storage.getItem("projects"));
+    projects[project.getProjectIndex()] = convertProject(project);
+
+    storage.setItem("projects", JSON.stringify(projects));
+}
+
+export function removeProject(projectIndex) {
+    const storage = window.localStorage;
+
+    if (!storage) return;
+
+    const projects = JSON.parse(storage.getItem("projects"));
+    projects.splice(projectIndex, 1);
+
+    storage.setItem("projects", JSON.stringify(projects));
+
+    const updatedTasks = JSON.parse(storage.getItem("tasks")).filter((t) => t.projectIndex !== projectIndex);
+    
+    updatedTasks.forEach((t) => {
+        if (t.projectIndex > projectIndex) {
+            t.projectIndex -= 1;
+        }
+    });
+
+    storage.setItem("tasks", JSON.stringify(updatedTasks));
+}

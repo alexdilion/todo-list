@@ -38,7 +38,8 @@ export default function app() {
 
     function editProjectProperties(project, properties) {
         project.setName(properties.name);
-        // localStorage.editProject(project);
+
+        localStorage.editProject(project);
     }
 
     function editTaskProperties(task, properties) {
@@ -98,6 +99,7 @@ export default function app() {
         ProjectView.loadProject(project);
         TabView.loadTabs(ProjectManager.getProjects());
         TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex());
+        localStorage.addProject(project);
 
         return true;
     }
@@ -120,7 +122,8 @@ export default function app() {
             elements.projectForm.setAttribute("data-project-index", tabIndex);
         } else if (target.classList.contains("project-delete")) {
             ProjectManager.deleteProject(tabIndex);
-            // localStorage.removeProject(tabIndex);
+            localStorage.removeProject(tabIndex);
+
             TabView.loadTabs(ProjectManager.getProjects());
             ProjectView.loadProject(ProjectManager.getCurrentProject());
             TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex());
@@ -176,8 +179,8 @@ export default function app() {
         const project = ProjectManager.getCurrentProject();
 
         project.setSortType(sortType);
+        localStorage.editProject(project);
         ProjectView.loadProject(project);
-        // localStorage.editProject(project);
     }
 
     function toggleSidebar() {
