@@ -20,15 +20,15 @@ function getHeaderText(username) {
     return "Good afternoon" + nameText;
 }
 
-export default function load(username, loadType) {
+export default function load(username, loadType, projects = []) {
     let manager;
 
     if (loadType === "demo") {
         manager = ProjectManager(demoTemplate());
     } else if (loadType === "empty") {
         manager = ProjectManager(emptyTemplate());
-    } else if (loadType === "saved") {
-        // load from localStorage
+    } else if (loadType === "load") {
+        manager = ProjectManager(projects);
     }
 
     loadTabs(manager.getProjects());

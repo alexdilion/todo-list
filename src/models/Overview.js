@@ -1,8 +1,16 @@
+import { isToday, isThisWeek } from "date-fns";
+
 import sortFunctions from "./sortFunctions";
 import Project from "./Project";
 
-const Overview = (projectName, filterFunction = () => true) => {
-    const filter = filterFunction;
+const filters = {
+    Today: (task) => isToday(task.getProperty("dueDate")),
+    "This Week": (task) => isThisWeek(task.getProperty("dueDate")),
+    "All Tasks": () => true,
+};
+
+const Overview = (projectName) => {
+    const filter = filters[projectName];
     let sortType = "Descending priority";
 
     const { getTask, getTasks, addTask, getName, getProjectIndex, setProjectIndex, hideTaskDescriptions, clearTasks } =

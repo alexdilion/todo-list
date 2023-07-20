@@ -10,11 +10,18 @@ import * as ProjectView from "./views/projectView";
 
 import InitialLoad from "./InitialLoad";
 import elements from "./views/elements";
+import * as localStorage from "./localStorage";
 
 export default function app() {
     let ProjectManager;
 
-    function loadData(event) {
+    if (window.localStorage && window.localStorage.projects) {
+        const data = localStorage.loadData();
+
+        ProjectManager = InitialLoad(data.username, "load", data.projects);
+    }
+
+    function initialise(event) {
         event.preventDefault();
         if (event.target === elements.templateButtonsContainer) return;
 
@@ -25,10 +32,13 @@ export default function app() {
         } else if (event.target === elements.emptyTemplateButton) {
             ProjectManager = InitialLoad(username, "empty");
         }
+
+        localStorage.saveData(username, ProjectManager.getProjects());
     }
 
     function editProjectProperties(project, properties) {
         project.setName(properties.name);
+        // localStorage.editProject(project);
     }
 
     function editTaskProperties(task, properties) {
@@ -41,7 +51,7 @@ export default function app() {
         const formData = FormView.getFormData(elements.taskForm);
         const { taskForm } = elements;
 
-        if (!taskForm) return false;
+        if (!taskForm || !formData) return false;
 
         if (taskForm.getAttribute("data-form-type") === "edit") {
             editTaskProperties(ProjectManager.getCurrentProject().getTask(+elements.taskForm.getAttribute("data-task-index")), formData);
@@ -110,6 +120,7 @@ export default function app() {
             elements.projectForm.setAttribute("data-project-index", tabIndex);
         } else if (target.classList.contains("project-delete")) {
             ProjectManager.deleteProject(tabIndex);
+            // localStorage.removeProject(tabIndex);
             TabView.loadTabs(ProjectManager.getProjects());
             ProjectView.loadProject(ProjectManager.getCurrentProject());
             TabView.updateSelected(ProjectManager.getCurrentProject().getProjectIndex());
@@ -166,6 +177,7 @@ export default function app() {
 
         project.setSortType(sortType);
         ProjectView.loadProject(project);
+        // localStorage.editProject(project);
     }
 
     function toggleSidebar() {
@@ -217,5 +229,5 @@ export default function app() {
     elements.newTaskButton.addEventListener("click", onTaskAddClick);
     elements.sortTasksSelector.addEventListener("change", onSortChange);
     elements.sidebarCollapse.addEventListener("click", toggleSidebar);
-    elements.templateButtonsContainer.addEventListener("click", loadData);
+    elements.templateButtonsContainer.addEventListener("click", initialise);
 }

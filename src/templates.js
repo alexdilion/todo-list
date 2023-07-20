@@ -1,14 +1,10 @@
-import { isToday, isThisWeek, add } from "date-fns";
+import { add } from "date-fns";
 
 import Task from "./models/Task";
 import Project from "./models/Project";
 import Overview from "./models/Overview";
 
-const overviews = [
-    Overview("Today", (task) => isToday(task.getProperty("dueDate"))),
-    Overview("This Week", (task) => isThisWeek(task.getProperty("dueDate"))),
-    Overview("All Tasks"),
-];
+export const overviews = [Overview("Today"), Overview("This Week"), Overview("All Tasks")];
 
 function addToNow(time) {
     return add(new Date(Date.now()), time);
@@ -146,5 +142,5 @@ export function demoTemplate() {
 }
 
 export function emptyTemplate() {
-    return overviews;
+    return [...overviews, Project("My Project")];
 }
