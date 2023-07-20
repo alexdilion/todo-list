@@ -12,7 +12,20 @@ import InitialLoad from "./InitialLoad";
 import elements from "./views/elements";
 
 export default function app() {
-    const ProjectManager = InitialLoad();
+    let ProjectManager;
+
+    function loadData(event) {
+        event.preventDefault();
+        if (event.target === elements.templateButtonsContainer) return;
+
+        const username = elements.signupFormUsername.value.trim();
+
+        if (event.target === elements.demoTemplateButton) {
+            ProjectManager = InitialLoad(username, "demo");
+        } else if (event.target === elements.emptyTemplateButton) {
+            ProjectManager = InitialLoad(username, "empty");
+        }
+    }
 
     function editProjectProperties(project, properties) {
         project.setName(properties.name);
@@ -204,4 +217,5 @@ export default function app() {
     elements.newTaskButton.addEventListener("click", onTaskAddClick);
     elements.sortTasksSelector.addEventListener("change", onSortChange);
     elements.sidebarCollapse.addEventListener("click", toggleSidebar);
+    elements.templateButtonsContainer.addEventListener("click", loadData);
 }

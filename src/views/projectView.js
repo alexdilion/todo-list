@@ -9,9 +9,9 @@ export function loadProject(project) {
     elements.sidebarContainer.setAttribute("data-current-project", project.getProjectIndex());
 
     if (project.getName() !== "All Tasks") {
-        elements.projectSubheader.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
+        elements.projectHeader.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
     } else {
-        elements.projectSubheader.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
+        elements.projectHeader.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
     }
 
     tasks.forEach((task) => {
@@ -37,8 +37,8 @@ export function updateHeader(project) {
     const subheader = project.getHeader();
 
     if (project.getName() !== "All Tasks") {
-        elements.projectSubheader.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
+        elements.projectHeader.innerHTML = `${subheader.text}<span class="project-name">${subheader.name}</span>`;
     } else {
-        elements.projectSubheader.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
+        elements.projectHeader.innerHTML = "Here are <span class='project-name'>all</span> of the tasks you need to do";
     }
 }

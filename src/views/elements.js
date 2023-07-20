@@ -1,6 +1,16 @@
 const elements = {
-    projectSubheader: document.querySelector("#greeting-subheader"),
+    pageHeader: document.querySelector("#page-header"),
+    projectHeader: document.querySelector("#project-header"),
     mainWrapper: document.querySelector(".main-wrapper"),
+    pageHeaderName: document.querySelector("#header-name"),
+    pageHeaderText: document.querySelector("#header-text"),
+
+    signupPage: document.querySelector(".signup-page"),
+    signupForm: document.querySelector(".signup-page form"),
+    signupFormUsername: document.querySelector("#username"),
+    templateButtonsContainer: document.querySelector(".signup-submit-buttons"),
+    demoTemplateButton: document.querySelector("#demo-template-button"),
+    emptyTemplateButton: document.querySelector("#empty-template-button"),
 
     newTaskButton: document.querySelector("#new-task"),
     sortTasksSelector: document.querySelector("#project-sort"),
