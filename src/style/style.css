@@ -241,6 +241,11 @@ hr {
     border: 1px solid var(--accent);
 }
 
+#user-projects {
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
 #new-project {
     display: flex;
     align-items: center;
