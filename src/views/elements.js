@@ -17,7 +17,7 @@ const elements = {
     tasksContainer: document.querySelector("#project-tasks"),
 
     sidebarContainer: document.querySelector(".sidebar"),
-    sidebarCollapse: document.querySelector(".sidebar-collapse-button"),
+    sidebarCollapse: document.querySelector(".menu-toggle-button"),
     overviewsContainer: document.querySelector("#overview-projects"),
     projectsContainer: document.querySelector("#user-projects"),
     tabTemplate: document.querySelector("#tab-template"),

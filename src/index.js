@@ -1,5 +1,6 @@
 import "./style/style.css";
 import "./style/form.css";
+import "./style/hamburger.css";
 import "flatpickr/dist/flatpickr.css"; // flatpickr css won't load without this for some reason
 
 import "./images/favicon.svg";

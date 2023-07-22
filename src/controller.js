@@ -47,6 +47,7 @@ export default function app() {
             task.setProperty(property, properties[property]);
         });
 
+        ProjectManager.getCurrentProject().sortTasks();
         localStorage.editTask(task);
     }
 

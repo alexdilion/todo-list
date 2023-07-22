@@ -1,0 +1,73 @@
+:root {
+    --black-lighter: #3f5870;
+    --black: #34495e;
+    --black-darker: #2c3e50;
+    --white: #f2f4f5;
+    --white-grey: #dce1e3;
+    --grey: #95a5a6;
+    --grey-dark: #95a5a6;
+    --green: #2ecc71;
+    --accent: #2ecc71;
+    --accent-darker: #27ae60;
+    --red: #e74c3c;
+    --orange: #f39c12;
+
+    --sidebar-width: 300px;
+    --sidebar-offset: 0px;
+}
+
+.menu-toggle-button {
+    all: unset;
+
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: transparent;
+    position: relative;
+    padding: 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    all: unset;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-toggle:hover {
+    cursor: pointer;
+}
+
+.hamburger-line {
+    height: 4px;
+    width: 100%;
+    background-color: var(--black-darker);
+    position: relative;
+    border-radius: 10px;
+    top: 0%;
+    bottom: 0%;
+    pointer-events: none;
+
+    transition-property: opacity top left;
+    transition-duration: 0.25s;
+}
+
+.menu-toggle:checked ~ #hb-line2 {
+    opacity: 0;
+}
+
+.menu-toggle:checked ~ #hb-line1 {
+    transform: translate(0%, -50%) rotate(45deg);
+    top: 50%;
+    left: 0%;
+}
+
+.menu-toggle:checked ~ #hb-line3 {
+    transform: translate(0%, 50%) rotate(-45deg);
+    top: -50%;
+}
