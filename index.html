@@ -37,9 +37,14 @@
                         New project
                     </button>
                 </div>
-                <button type="button" class="sidebar-collapse-button">
-                    <span class="material-symbols-outlined"> keyboard_arrow_right </span>
-                </button>
+                <div class="menu-toggle-container">
+                    <button type="button" class="menu-toggle-button" aria-label="Toggle sidebar">
+                        <input type="checkbox" class="menu-toggle" checked/>
+                        <span class="hamburger-line" id="hb-line1"></span>
+                        <span class="hamburger-line" id="hb-line2"></span>
+                        <span class="hamburger-line" id="hb-line3"></span>
+                    </button>
+                </div>
             </aside>
 
             <main class="project-main">
@@ -105,7 +110,7 @@
         <div class="templates display-none" aria-hidden="true">
             <div id="task-template" class="task-container">
                 <div class="project-task">
-                    <input type="checkbox" class="task-done" />
+                    <input type="checkbox" class="task-done fancy-chkbox" />
                     <div class="task-content">
                         <h4 class="task-header">Finish To-Do List Project</h4>
                         <div class="task-info">
@@ -188,7 +193,7 @@
                             </div>
                             <div class="flex-row">
                                 <label for="task-done">Task finished</label>
-                                <input type="checkbox" name="task-done" id="task-done" />
+                                <input type="checkbox" name="task-done" id="task-done" class="fancy-chkbox" />
                             </div>
                             <div class="form-buttons">
                                 <button type="submit" class="project-button button-transition" id="add-task">Add</button>
