@@ -7,10 +7,10 @@ import * as FormView from "./views/formView";
 import * as TabView from "./views/tabView";
 import * as TaskView from "./views/taskView";
 import * as ProjectView from "./views/projectView";
+import * as localStorage from "./localStorage";
 
 import InitialLoad from "./InitialLoad";
 import elements from "./views/elements";
-import * as localStorage from "./localStorage";
 
 export default function app() {
     let ProjectManager;
